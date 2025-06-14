@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NutriJB - Your life Your way Your Diet</title>
+<title>NutriJosue - Your life Your way Your Diet</title>
 
-<!-- Fuentes modernas -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet" />
+<!-- Fuente bonita -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 
 <style>
   /* Reset básico */
@@ -14,223 +14,705 @@
     margin: 0; padding: 0; box-sizing: border-box;
   }
   body {
+    font-family: 'Poppins', sans-serif;
     background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
     background-size: cover;
-    font-family: 'Poppins', sans-serif;
     color: #fff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    user-select: none;
   }
-
   header {
-    background: rgba(0, 60, 0, 0.85);
-    padding: 25px 0;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px 30px;
+    border-radius: 10px;
     text-align: center;
-    font-family: 'Pacifico', cursive;
-    font-size: 3.4rem;
-    letter-spacing: 6px;
-    font-weight: 800;
-    user-select: none;
-    color: #a2d149;
-    text-shadow: 1px 1px 5px #0a3e00;
+    margin-bottom: 30px;
+    box-shadow: 0 0 15px rgba(0,255,128,0.5);
   }
-
-  footer {
-    background: rgba(0, 40, 0, 0.8);
-    padding: 15px 0;
-    text-align: center;
+  header h1 {
+    font-weight: 600;
+    font-size: 3rem;
+    color: #00ff80;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #00ff80;
+  }
+  header p {
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: #ccffdd;
     font-style: italic;
-    font-size: 1.2rem;
-    user-select: none;
-    color: #c2f44d;
-    font-weight: 600;
-    box-shadow: inset 0 0 20px #a2d149;
   }
-
   main {
-    flex-grow: 1;
-    padding: 20px 15px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  /* Formulario moderno */
-  form {
-    background: rgba(255 255 255 / 0.15);
-    padding: 25px 30px;
+    background: rgba(0,0,0,0.55);
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px 30px;
     border-radius: 15px;
-    box-shadow: 0 0 15px #6fb72fcc;
-    margin-bottom: 25px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
-    gap: 18px;
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-
-  label {
+    box-shadow: 0 0 30px rgba(0,255,128,0.7);
     display: flex;
     flex-direction: column;
-    color: #d6f37a;
+    gap: 20px;
   }
-
-  input, select {
-    margin-top: 6px;
-    padding: 9px 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-    font-weight: 400;
-    outline-offset: 2px;
-    outline-color: #a2d149;
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 15px;
   }
-
-  /* Botones estilo moderno */
-  .btn {
-    background: #88c540;
+  button {
+    background: linear-gradient(135deg, #00ff80, #005f30);
     border: none;
-    padding: 12px 24px;
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: #122600;
-    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 4px 8px #67972a88;
-    transition: background 0.25s ease, transform 0.2s ease;
-    user-select: none;
-  }
-  .btn:hover {
-    background: #a5dd40;
-    transform: scale(1.07);
-  }
-  .btn:active {
-    transform: scale(0.95);
-  }
-
-  /* Contenedor botones */
-  #botonesPlan {
-    text-align: center;
-    margin-bottom: 25px;
-    user-select: none;
-  }
-
-  /* Tabla plan mensual */
-  table#planMes {
-    width: 100%;
-    border-collapse: collapse;
-    background: rgba(255 255 255 / 0.9);
-    color: #222;
-    border-radius: 14px;
+    box-shadow: 0 5px 15px rgba(0,255,128,0.6);
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 6px 15px #4caf50aa;
+    transition: background 0.3s ease;
   }
-
-  table#planMes th, table#planMes td {
-    border: 1px solid #999;
-    padding: 10px 14px;
-    text-align: center;
-    font-size: 0.9rem;
+  button:hover {
+    background: linear-gradient(135deg, #00ffa0, #008040);
   }
-  table#planMes th {
-    background-color: #4caf50;
-    color: white;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-  }
-
-  /* Animación confeti explosion pequeña */
-  .confeti {
+  /* Explosion animation */
+  .explosion {
     position: absolute;
+    border-radius: 50%;
     pointer-events: none;
-    width: 10px;
-    height: 10px;
-    background-color: #a2d149;
-    opacity: 0.9;
-    animation: explotarConfeti 700ms forwards;
-    border-radius: 2px;
+    background: rgba(0, 255, 128, 0.7);
+    animation: explode 0.5s ease forwards;
+    mix-blend-mode: screen;
   }
-
-  @keyframes explotarConfeti {
+  @keyframes explode {
     0% {
-      opacity: 0.9;
-      transform: translate(0, 0) rotate(0deg) scale(1);
+      transform: scale(0);
+      opacity: 1;
     }
     100% {
+      transform: scale(4);
       opacity: 0;
-      transform: translate(var(--tx, 0px), var(--ty, 0px)) rotate(720deg) scale(0.3);
     }
   }
 
-  /* Animación de carga */
-  #loader {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 6px solid #a2d149;
-    border-top: 6px solid transparent;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: girar 1s linear infinite;
-    display: none;
-    z-index: 9999;
-  }
-
-  @keyframes girar {
-    0% { transform: translate(-50%, -50%) rotate(0deg);}
-    100% { transform: translate(-50%, -50%) rotate(360deg);}
+  /* Área para mostrar la tabla y mensajes */
+  #output {
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 10px;
+    padding: 15px;
+    min-height: 300px;
+    color: #aaffcc;
+    font-size: 1rem;
+    overflow-x: auto;
   }
 
 </style>
 </head>
 <body>
-
-<header>NutriJB</header>
+<header>
+  <h1>NutriJB</h1>
+  <p>Your life Your way Your Diet</p>
+</header>
 
 <main>
-  <form id="formDatos">
-    <label>Edad: <input type="number" id="edad" min="10" max="100" required></label>
-    <label>Sexo:
-      <select id="sexo" required>
-        <option value="">Selecciona</option>
-        <option value="hombre">Hombre</option>
-        <option value="mujer">Mujer</option>
-      </select>
-    </label>
-    <label>Altura (cm): <input type="number" id="altura" min="100" max="250" required></label>
-    <label>Peso (kg): <input type="number" id="peso" min="30" max="250" required></label>
-    <label>Presupuesto mensual ($): <input type="number" id="presupuesto" min="500" max="20000" required></label>
-    <label>Objetivo:
-      <select id="objetivo" required>
-        <option value="">Selecciona</option>
-        <option value="bajar_grasa">Bajar grasa</option>
-        <option value="subir_musculo">Subir músculo</option>
-      </select>
-    </label>
-    <label>Tipo de deporte:
-      <select id="deporte" required>
-        <option value="">Selecciona</option>
-        <option value="cardio">Cardio</option>
-        <option value="fuerza">Fuerza</option>
-        <option value="mixto">Mixto</option>
-        <option value="ninguno">Ninguno</option>
-      </select>
-    </label>
-    <label>Alergias (separa por comas, ej: maní, lactosa): <input type="text" id="alergias" placeholder="ej: maní,lactosa"></label>
-    <label>Comidas que no te gustan (separa por comas): <input type="text" id="noGustan" placeholder="ej: pescado,cerdo"></label>
-    <button type="submit" class="btn">Generar Plan</button>
-  </form>
-
-  <div id="botonesPlan" style="display:none;">
-    <button id="btnCambiarComida" class="btn">Cambiar Comidas</button>
-    <button id="btnCambiarRutina" class="btn">Cambiar Rutina</button>
-    <button id="btnSubirDificultad" class="btn">Subir Dificultad Ejercicios</button>
-    <span id="nivelDisplay" style="margin-left:15px; font-weight:700; font-size:1.1rem;">Nivel dificultad: 1</span>
+  <div class="buttons">
+    <button id="btn-change-diet">Cambiar Comidas</button>
+    <button id="btn-change-routine">Cambiar Rutina</button>
+    <button id="btn-increase-difficulty">Subir dificultad</button>
   </div>
 
-  <table id="planMes" style="display:none;">
+  <div id="output">
+    <!-- Aquí se mostrarán las tablas de dieta y rutina -->
+    <p>Bienvenido a NutriJosue! Usa los botones para generar tu plan personalizado.</p>
+  </div>
+</main>
+
+<script>
+  // Función para crear una pequeña explosión animada en botón
+  function createExplosion(e) {
+    const btn = e.currentTarget;
+    const explosion = document.createElement('span');
+    explosion.classList.add('explosion');
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    explosion.style.left = x + 'px';
+    explosion.style.top = y + 'px';
+    btn.appendChild(explosion);
+    setTimeout(() => explosion.remove(), 500);
+  }
+
+  document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      createExplosion(e);
+    });
+  });
+
+  // Datos de ejemplo básicos para mostrar
+  const sampleDiet = [
+    { dia: 1, desayuno: "Huevos revueltos (150g)", comida: "Pollo a la plancha (200g)", cena: "Ensalada verde (150g)", snack: "Almendras (30g)" },
+    { dia: 2, desayuno: "Avena con fruta (200g)", comida: "Pescado al horno (180g)", cena: "Verduras salteadas (150g)", snack: "Yogur natural (100g)" }
+  ];
+
+  const sampleRoutine = [
+    { dia: 1, musculo: "Pecho y Tríceps", ejercicios: ["Press de banca 12 repes 1min descanso", "Fondos 15 repes 1min descanso"] },
+    { dia: 2, musculo: "Pierna y Abdomen", ejercicios: ["Sentadillas 15 repes 1min descanso", "Crunch abdominal 20 repes 45s descanso"] }
+  ];
+
+  // Función para mostrar dietas y rutina en output
+  function mostrarPlan() {
+    let html = `<h3>Plan de 2 días de ejemplo</h3>`;
+    html += `<table border="1" cellpadding="8" cellspacing="0" style="width:100%;color:#aaffcc;border-collapse:collapse;">
+      <thead>
+        <tr style="background:#003300;">
+          <th>Día</th><th>Desayuno</th><th>Comida</th><th>Cena</th><th>Snack</th>
+        </tr>
+      </thead><tbody>`;
+    sampleDiet.forEach(d => {
+      html += `<tr>
+        <td>${d.dia}</td>
+        <td>${d.desayuno}</td>
+        <td>${d.comida}</td>
+        <td>${d.cena}</td>
+        <td>${d.snack}</td>
+      </tr>`;
+    });
+    html += `</tbody></table><br>`;
+
+    html += `<h3>Rutina</h3>`;
+    sampleRoutine.forEach(r => {
+      html += `<strong>Día ${r.dia} - ${r.musculo}</strong><ul>`;
+      r.ejercicios.forEach(ej => {
+        html += `<li>${ej}</li>`;
+      });
+      html += `</ul>`;
+    });
+
+    document.getElementById('output').innerHTML = html;
+  }
+
+  // Mostrar plan inicial al cargar
+  mostrarPlan();
+
+  // Botones para cambiar comidas y rutina (placeholder funciones)
+  document.getElementById('btn-change-diet').addEventListener('click', () => {
+    alert('Función para cambiar comidas pronto disponible!');
+  });
+  document.getElementById('btn-change-routine').addEventListener('click', () => {
+    alert('Función para cambiar rutina pronto disponible!');
+  });
+  document.getElementById('btn-increase-difficulty').addEventListener('click', () => {
+    alert('Función para subir dificultad pronto disponible!');
+  });
+</script>
+</body>
+</html><div id="user-inputs" style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 10px; margin-bottom: 20px; color: #ccffcc;">
+  <h2>Personaliza tu plan</h2>
+  <form id="plan-form">
+    <div style="display:flex; flex-wrap:wrap; gap:15px;">
+      <label style="flex:1 1 150px;">
+        Edad:<br/>
+        <input type="number" id="age" min="10" max="100" required style="width:100%; padding:5px; border-radius:5px;"/>
+      </label>
+      <label style="flex:1 1 150px;">
+        Peso (kg):<br/>
+        <input type="number" id="weight" min="30" max="200" required style="width:100%; padding:5px; border-radius:5px;"/>
+      </label>
+      <label style="flex:1 1 150px;">
+        Altura (cm):<br/>
+        <input type="number" id="height" min="100" max="250" required style="width:100%; padding:5px; border-radius:5px;"/>
+      </label>
+      <label style="flex:1 1 150px;">
+        Sexo:<br/>
+        <select id="sex" required style="width:100%; padding:5px; border-radius:5px;">
+          <option value="">Selecciona</option>
+          <option value="male">Masculino</option>
+          <option value="female">Femenino</option>
+        </select>
+      </label>
+      <label style="flex:1 1 200px;">
+        Objetivo:<br/>
+        <select id="goal" required style="width:100%; padding:5px; border-radius:5px;">
+          <option value="">Selecciona</option>
+          <option value="loseFat">Bajar grasa (3 comidas)</option>
+          <option value="gainMuscle">Subir músculo (4 comidas)</option>
+          <option value="maintain">Mantener peso (3 comidas)</option>
+        </select>
+      </label>
+      <label style="flex:1 1 200px;">
+        Presupuesto mensual ($):<br/>
+        <input type="number" id="budget" min="1000" max="30000" required style="width:100%; padding:5px; border-radius:5px;"/>
+      </label>
+      <label style="flex:1 1 300px;">
+        Tipo de deporte:<br/>
+        <select id="sport" style="width:100%; padding:5px; border-radius:5px;">
+          <option value="">Ninguno</option>
+          <option value="cardio">Cardio</option>
+          <option value="strength">Fuerza</option>
+          <option value="mixed">Mixto</option>
+          <option value="none">Ninguno</option>
+        </select>
+      </label>
+    </div>
+
+    <label style="margin-top:15px; display:block;">
+      Alergias (separa con coma):<br/>
+      <input type="text" id="allergies" placeholder="Ej: cacahuate, lactosa" style="width:100%; padding:5px; border-radius:5px;"/>
+    </label>
+    <label style="margin-top:15px; display:block;">
+      Comidas que no te gustan (separa con coma):<br/>
+      <input type="text" id="dislikes" placeholder="Ej: pescado, huevo" style="width:100%; padding:5px; border-radius:5px;"/>
+    </label>
+
+    <button type="submit" style="margin-top:20px; background: #00ff80; color:#000; font-weight:700; padding:10px 20px; border:none; border-radius:25px; cursor:pointer; box-shadow: 0 0 10px #00ff80;">
+      Generar Plan
+    </button>
+  </form>
+</div>
+
+<script>
+  // Arrays con comidas de ejemplo (puedes extender a 150 de cada tipo)
+  const desayunos = [
+    { nombre: "Huevos revueltos", gramos: 150, ingredientes: ["huevo"], precio: 20 },
+    { nombre: "Avena con fruta", gramos: 200, ingredientes: ["avena", "fruta"], precio: 18 },
+    { nombre: "Yogur con granola", gramos: 180, ingredientes: ["lactosa", "granola"], precio: 22 },
+    { nombre: "Pan integral con aguacate", gramos: 120, ingredientes: ["gluten", "aguacate"], precio: 25 }
+  ];
+  const comidas = [
+    { nombre: "Pollo a la plancha", gramos: 200, ingredientes: ["pollo"], precio: 40 },
+    { nombre: "Pescado al horno", gramos: 180, ingredientes: ["pescado"], precio: 45 },
+    { nombre: "Carne magra", gramos: 180, ingredientes: ["res"], precio: 50 },
+    { nombre: "Ensalada mixta", gramos: 150, ingredientes: ["lechuga", "tomate"], precio: 20 }
+  ];
+  const cenas = [
+    { nombre: "Ensalada verde", gramos: 150, ingredientes: ["lechuga", "pepino"], precio: 15 },
+    { nombre: "Verduras salteadas", gramos: 150, ingredientes: ["verduras"], precio: 18 },
+    { nombre: "Sopa de pollo", gramos: 200, ingredientes: ["pollo"], precio: 25 }
+  ];
+  const snacks = [
+    { nombre: "Almendras", gramos: 30, ingredientes: ["almendra"], precio: 12 },
+    { nombre: "Yogur natural", gramos: 100, ingredientes: ["lactosa"], precio: 18 },
+    { nombre: "Fruta fresca", gramos: 150, ingredientes: ["fruta"], precio: 10 }
+  ];
+
+  // Ejercicios base para rutinas (cada grupo muscular con 20 ejercicios, aquí 2 por ejemplo)
+  const ejerciciosPorGrupo = {
+    pecho: [
+      { nombre: "Press de banca", repeticiones: 12, descanso: "1 min" },
+      { nombre: "Fondos", repeticiones: 15, descanso: "1 min" }
+    ],
+    tricep: [
+      { nombre: "Extensiones de tríceps", repeticiones: 12, descanso: "1 min" },
+      { nombre: "Press cerrado", repeticiones: 12, descanso: "1 min" }
+    ],
+    pierna: [
+      { nombre: "Sentadillas", repeticiones: 15, descanso: "1 min" },
+      { nombre: "Zancadas", repeticiones: 12, descanso: "1 min" }
+    ],
+    abdomen: [
+      { nombre: "Crunch abdominal", repeticiones: 20, descanso: "45 s" },
+      { nombre: "Plancha", repeticiones: "1 min", descanso: "30 s" }
+    ],
+    espalda: [
+      { nombre: "Remo con barra", repeticiones: 12, descanso: "1 min" },
+      { nombre: "Dominadas", repeticiones: 10, descanso: "1 min" }
+    ],
+    hombro: [
+      { nombre: "Press militar", repeticiones: 12, descanso: "1 min" },
+      { nombre: "Elevaciones laterales", repeticiones: 15, descanso: "1 min" }
+    ],
+    cuello: [
+      { nombre: "Flexiones de cuello", repeticiones: 15, descanso: "45 s" },
+      { nombre: "Rotaciones de cuello", repeticiones: 20, descanso: "30 s" }
+    ]
+  };
+
+  // Secuencia de grupos musculares por día (día 1: pecho+tríceps, día 2: pierna+abdomen, etc)
+  const rutinaPorDia = [
+    ["pecho", "tricep"],
+    ["pierna", "abdomen"],
+    ["espalda", "hombro", "cuello"],
+    ["pecho", "tricep"],
+    ["pierna", "abdomen"],
+    ["espalda", "hombro", "cuello"],
+    ["descanso"]
+  ];
+
+  // Función para filtrar comidas según alergias y dislikes
+  function filtrarComidas(lista, alergias, dislikes) {
+    return lista.filter(c => {
+      // Si algún ingrediente está en alergias o dislikes, se elimina
+      for (const ing of c.ingredientes) {
+        if (alergias.includes(ing.trim().toLowerCase()) || dislikes.includes(ing.trim().toLowerCase())) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }
+
+  // Función para generar un plan de comidas y rutina para 30 días
+  function generarPlan(datos) {
+    const { age, weight, height, sex, goal, budget, sport, allergies, dislikes } = datos;
+
+    // Convertir a arrays limpios
+    const alergiasArr = allergies.split(',').map(s => s.trim().toLowerCase()).filter(s => s);
+    const dislikesArr = dislikes.split(',').map(s => s.trim().toLowerCase()).filter(s => s);
+
+    // Filtrar comidas
+    const desayunosFiltrados = filtrarComidas(desayunos, alergiasArr, dislikesArr);
+    const comidasFiltradas = filtrarComidas(comidas, alergiasArr, dislikesArr);
+    const cenasFiltradas = filtrarComidas(cenas, alergiasArr, dislikesArr);
+    const snacksFiltrados = filtrarComidas(snacks, alergiasArr, dislikesArr);
+
+    if(desayunosFiltrados.length === 0 || comidasFiltradas.length === 0 || cenasFiltradas.length === 0 || snacksFiltrados.length === 0) {
+      return { error: "No hay suficientes comidas disponibles con tus alergias y preferencias." };
+    }
+
+    // Número de comidas al día según objetivo
+    let comidasPorDia = 3;
+    if(goal === "gainMuscle") comidasPorDia = 4;
+
+    // Calcular presupuesto por comida (simplificado)
+    const presupuestoPorComida = budget / 30 / comidasPorDia;
+
+    // Crear plan para 30 días
+    let plan = [];
+    for(let d=1; d<=30; d++) {
+      let diaPlan = { dia: d };
+
+      // Elegir desayuno, comida, cena y snack aleatorios y dentro del presupuesto
+      diaPlan.desayuno = desayunosFiltrados.find(c => c.precio <= presupuestoPorComida) || desayunosFiltrados[0];
+      diaPlan.comida = comidasFiltradas.find(c => c.precio <= presupuestoPorComida) || comidasFiltradas[0];
+      diaPlan.cena = cenasFiltradas.find(c => c.precio <= presupuestoPorComida) || cenasFiltradas[0];
+      if(comidasPorDia === 4) {
+        diaPlan.snack = snacksFiltrados.find(c => c.precio <= presupuestoPorComida) || snacksFiltrados[0];
+      } else {
+        diaPlan.snack = null;
+      }
+
+      // Rutina
+      const diaRutinaIndex = (d-1) % rutinaPorDia.length;
+      const gruposMusculares = rutinaPorDia[diaRutinaIndex];
+      if(gruposMusculares[0] === "descanso") {
+        diaPlan.rutina = [{ nombre: "Descanso", repeticiones: "-", descanso: "-" }];
+      } else {
+        diaPlan.rutina = [];
+        gruposMusculares.forEach(grupo => {
+          const ejerciciosGrupo = ejerciciosPorGrupo[grupo];
+          // Tomar primeros 2 ejercicios del grupo para el ejemplo
+          diaPlan.rutina.push(...ejerciciosGrupo.slice(0,2));
+        });
+      }
+
+      plan.push(diaPlan);
+    }
+    return { plan };
+  }
+
+  // Capturar evento submit del form para generar plan
+  document.getElementById('plan-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const datos = {
+      age: Number(document.getElementById('age').value),
+      weight: Number(document.getElementById('weight').value),
+      height: Number(document.getElementById('height').value),
+      sex: document.getElementById('sex').value,
+      goal: document.getElementById('goal').value,
+      budget: Number(document.getElementById('budget').value),
+      sport: document.getElementById('sport').value,
+      allergies: document.getElementById('allergies').value,
+      dislikes: document.getElementById('dislikes').value,
+    };
+    const resultado = generarPlan(datos);
+    if(resultado.error) {
+      document.getElementById('output').innerHTML = `<p style="color:#ff5555;">${resultado.error}</p>`;
+    } else {
+      mostrarPlanCompleto(resultado.plan);
+    }
+  });
+
+  // Función para mostrar el plan completo de 30 días con tabla y rutina
+  function mostrarPlanCompleto(plan) {
+    let html = `<h3>Plan personalizado para 30 días</h3>`;
+    html += `<table border="1" cellpadding="8" cellspacing="0" style="width:100%;color:#aaffcc;border-collapse:collapse; font-size:0.9rem;">
+      <thead>
+        <tr style="background:#003300;">
+          <th>Día</th><th>Desayuno</th><th>Comida</th><th>Cena</th><th>Snack</th>
+        </tr>
+      </thead><tbody>`;
+    plan.forEach(d => {
+      html += `<tr>
+        <td>${d.dia}</td>
+        <td>${d.desayuno ? `${d.desayuno.nombre} (${d.desayuno.gramos}g)` : '-'}</td>
+        <td>${d.comida ? `${d.comida.nombre} (${d.comida.gramos}g)` : '-'}</td>
+        <td>${d.cena ? `${d.cena.nombre} (${d.cena.gramos}g)` : '-'}</td>
+        <td>${d.snack ? `${d.snack.nombre} (${d.snack.gramos}g)` : '-'}</td>
+      </tr>`;
+    });
+    html += `</tbody></table><br>`;
+
+    html += `<h3>Rutina de ejercicios</h3>`;
+    plan.forEach(d => {
+      html += `<strong>Día ${d.dia}:</strong> <ul style="margin-bottom:15px;">`;
+      d.rutina.forEach(ej => {
+        html += `<li>${ej.nombre} - ${ej.repeticiones} repeticiones - Descanso: ${ej.descanso}</li>`;
+      });
+      html += `</ul>`;
+    });
+
+    document.getElementById('output').innerHTML = html;
+  }
+</script>
+<!-- PARTE 3: FILTROS AVANZADOS Y AMPLIACIÓN DE BASE DE DATOS -->
+
+<style>
+  /* Estilos para mostrar filtros y tabla */
+  #filters {
+    background: rgba(255 255 255 / 0.8);
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  label {
+    font-weight: 600;
+  }
+  select, input[type="text"], input[type="number"] {
+    margin: 0.5rem 0 1rem 0;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    width: 100%;
+  }
+</style>
+
+<div id="filters">
+  <h2>Personaliza tu NutriJosue</h2>
+  
+  <label for="allergiesInput">Alergias (separa con comas):</label>
+  <input type="text" id="allergiesInput" placeholder="Ejemplo: maní, mariscos" />
+  
+  <label for="dislikesInput">Comidas que no te gustan (separa con comas):</label>
+  <input type="text" id="dislikesInput" placeholder="Ejemplo: brócoli, pescado" />
+  
+  <label for="budgetInput">Presupuesto mensual máximo (MXN):</label>
+  <input type="number" id="budgetInput" min="500" max="20000" step="100" value="4000" />
+  
+  <button id="applyFiltersBtn" style="background:#1b5e20;color:#fff;padding:10px 15px;border:none;border-radius:8px;cursor:pointer;">
+    Aplicar filtros y generar plan
+  </button>
+</div>
+
+<script>
+  // Base ampliada de comidas (solo muestras, deberás añadir 150+ cada categoría)
+  const foods = {
+    desayunos: [
+      { nombre: "Avena con frutas", calorias: 350, precio: 20, alergias: [], tags: ["normal", "bajo_grasa"] },
+      { nombre: "Huevos revueltos con espinacas", calorias: 300, precio: 25, alergias: ["huevo"], tags: ["alto_proteina"] },
+      { nombre: "Pan integral con aguacate", calorias: 400, precio: 30, alergias: ["gluten"], tags: ["normal"] },
+      // Agrega más desayunos aquí
+    ],
+    comidas: [
+      { nombre: "Pechuga de pollo con arroz integral", calorias: 600, precio: 50, alergias: [], tags: ["alto_proteina"] },
+      { nombre: "Ensalada de quinoa con verduras", calorias: 450, precio: 40, alergias: [], tags: ["vegetariano", "bajo_grasa"] },
+      { nombre: "Salmón a la plancha con brócoli", calorias: 650, precio: 70, alergias: ["pescado"], tags: ["alto_proteina"] },
+      // Agrega más comidas aquí
+    ],
+    cenas: [
+      { nombre: "Tortilla de claras con espinaca", calorias: 300, precio: 20, alergias: ["huevo"], tags: ["bajo_grasa"] },
+      { nombre: "Sopa de verduras con pollo", calorias: 350, precio: 25, alergias: [], tags: ["normal"] },
+      { nombre: "Ensalada César sin crutones", calorias: 400, precio: 35, alergias: ["lactosa"], tags: ["normal"] },
+      // Agrega más cenas aquí
+    ],
+    snacks: [
+      { nombre: "Nueces mixtas (30g)", calorias: 200, precio: 15, alergias: ["nueces"], tags: ["alto_grasa"] },
+      { nombre: "Yogur natural", calorias: 150, precio: 20, alergias: ["lactosa"], tags: ["normal"] },
+      { nombre: "Fruta fresca (manzana)", calorias: 100, precio: 10, alergias: [], tags: ["normal"] },
+      // Agrega más snacks aquí
+    ]
+  };
+
+  // Función para filtrar alimentos según alergias y dislikes
+  function filterFoods(allergiesArr, dislikesArr) {
+    const filtered = {};
+    for (const mealType in foods) {
+      filtered[mealType] = foods[mealType].filter(food => {
+        // No incluir si alguna alergia coincide
+        if (food.alergias.some(a => allergiesArr.includes(a.toLowerCase().trim()))) return false;
+        // No incluir si nombre está en dislikes
+        if (dislikesArr.some(d => food.nombre.toLowerCase().includes(d.toLowerCase().trim()))) return false;
+        return true;
+      });
+    }
+    return filtered;
+  }
+
+  // Función para generar plan mensual ajustado al presupuesto
+  function generatePlan(filteredFoods, budget) {
+    const dailyCaloriesGoal = 2000; // base, luego puedes ajustar según usuario
+    const days = 30;
+    const mealsPerDay = {
+      desayuno: 1,
+      comida: 1,
+      cena: 1,
+      snack: 1
+    };
+    
+    // Estimación presupuesto diario y selección comidas
+    const budgetPerDay = budget / days;
+    
+    // Aquí armarás el plan día a día
+    let plan = [];
+    for (let d = 1; d <= days; d++) {
+      let dayPlan = {
+        desayuno: pickMeal(filteredFoods.desayunos, budgetPerDay * 0.25),
+        comida: pickMeal(filteredFoods.comidas, budgetPerDay * 0.35),
+        cena: pickMeal(filteredFoods.cenas, budgetPerDay * 0.25),
+        snack: pickMeal(filteredFoods.snacks, budgetPerDay * 0.15),
+      };
+      plan.push(dayPlan);
+    }
+    return plan;
+  }
+
+  // Función para seleccionar comida según presupuesto máximo para esa comida
+  function pickMeal(mealArray, maxPrice) {
+    // Filtrar comidas dentro del presupuesto
+    const options = mealArray.filter(m => m.precio <= maxPrice);
+    if (options.length === 0) return { nombre: "Sin opción disponible", calorias: 0, precio: 0 };
+    // Elegir aleatoriamente una opción disponible
+    return options[Math.floor(Math.random() * options.length)];
+  }
+
+  // Mostrar plan en consola para pruebas (después agregar tabla en UI)
+  document.getElementById("applyFiltersBtn").addEventListener("click", () => {
+    const allergies = document.getElementById("allergiesInput").value.toLowerCase().split(",").map(s => s.trim()).filter(Boolean);
+    const dislikes = document.getElementById("dislikesInput").value.toLowerCase().split(",").map(s => s.trim()).filter(Boolean);
+    const budget = Number(document.getElementById("budgetInput").value);
+    
+    const filtered = filterFoods(allergies, dislikes);
+    const plan = generatePlan(filtered, budget);
+    
+    console.clear();
+    console.log("Plan mensual NutriJosue filtrado:");
+    console.log(plan);
+    alert("Plan generado! Revisa la consola para ver la estructura (más adelante mostramos en tabla en UI)");
+  });
+</script>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2b5d34, #1b3a1a);
+    color: #e0f2f1;
+    margin: 0; padding: 0;
+  }
+
+  header {
+    text-align: center;
+    padding: 1rem 0;
+    background: rgba(0,0,0,0.3);
+    font-weight: 700;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #2ecc71;
+  }
+
+  header span {
+    color: #81c784;
+  }
+
+  #phrase {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 1.2rem;
+    color: #a5d6a7;
+  }
+
+  #planContainer {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.25);
+    border-radius: 12px;
+    box-shadow: 0 0 20px #1b5e20cc;
+  }
+
+  th, td {
+    border: 1px solid #2e7d32;
+    padding: 0.75rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  th {
+    background: #2e7d32;
+    font-weight: 700;
+  }
+
+  td {
+    background: rgba(33, 87, 38, 0.8);
+    font-size: 0.9rem;
+  }
+
+  .btn-explosion {
+    background: #388e3c;
+    border: none;
+    color: #e0f2f1;
+    padding: 0.4rem 0.8rem;
+    margin: 0.3rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 0 8px #81c784;
+    transition: transform 0.2s ease;
+  }
+  .btn-explosion:active {
+    transform: scale(1.1);
+  }
+
+  /* Explosión animación pequeña */
+  .explosion {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(circle, #a5d6a7 40%, transparent 70%);
+    animation: explode 0.4s forwards;
+    z-index: 9999;
+  }
+  @keyframes explode {
+    0% {
+      opacity: 1;
+      transform: scale(0.2);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2);
+    }
+  }
+</style>
+
+<header>
+  Nutri<span>JB</span>
+  <div id="phrase">Your life Your way Your Diet</div>
+</header>
+
+<div id="planContainer">
+  <table id="planTable" aria-label="Plan Nutricional y Rutina de 30 días">
     <thead>
       <tr>
         <th>Día</th>
@@ -238,257 +720,640 @@
         <th>Comida (g)</th>
         <th>Cena (g)</th>
         <th>Snack (g)</th>
-        <th>Rutina (Reps / Descanso seg.)</th>
+        <th>Rutina (Reps / Descanso)</th>
       </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+      <!-- Aquí se va a generar el plan -->
+    </tbody>
   </table>
-</main>
+</div>
 
-<footer>Your life Your way Your Diet</footer>
-
-<div id="loader"></div>
+<div style="text-align:center; margin-bottom:3rem;">
+  <button id="changeMealsBtn" class="btn-explosion">Cambiar Comidas</button>
+  <button id="changeRoutineBtn" class="btn-explosion">Cambiar Rutina</button>
+</div>
 
 <script>
-  // Datos comidas (ejemplo simple, agrega más en producción)
-  const desayunos = [
-    { nombre: "Avena con frutas", ingredientes: ["avena", "frutas"], precio: 20 },
-    { nombre: "Huevos revueltos", ingredientes: ["huevo"], precio: 15 },
-    { nombre: "Pan integral con queso", ingredientes: ["pan", "queso"], precio: 18 },
-    { nombre: "Yogur natural", ingredientes: ["lactosa"], precio: 12 },
-    { nombre: "Smoothie verde", ingredientes: ["espinaca", "banana"], precio: 22 }
-  ];
-  const comidas = [
-    { nombre: "Pechuga a la plancha", ingredientes: ["pollo"], precio: 35 },
-    { nombre: "Arroz integral con verduras", ingredientes: ["arroz", "verduras"], precio: 25 },
-    { nombre: "Ensalada César", ingredientes: ["lechuga", "pollo", "queso"], precio: 30 },
-    { nombre: "Salmón al horno", ingredientes: ["pescado"], precio: 50 },
-    { nombre: "Tacos de carne", ingredientes: ["carne"], precio: 28 }
-  ];
-  const cenas = [
-    { nombre: "Sopa de verduras", ingredientes: ["verduras"], precio: 18 },
-    { nombre: "Tortilla integral con aguacate", ingredientes: ["aguacate", "pan"], precio: 22 },
-    { nombre: "Pescado al vapor", ingredientes: ["pescado"], precio: 40 },
-    { nombre: "Ensalada de atún", ingredientes: ["atun"], precio: 30 },
-    { nombre: "Omelette de espinacas", ingredientes: ["huevo", "espinaca"], precio: 25 }
-  ];
-  const snacks = [
-    { nombre: "Frutos secos", ingredientes: ["nueces"], precio: 15 },
-    { nombre: "Barra de proteína", ingredientes: [], precio: 18 },
-    { nombre: "Yogur griego", ingredientes: ["lactosa"], precio: 20 },
-    { nombre: "Palitos de zanahoria", ingredientes: ["verduras"], precio: 12 },
-    { nombre: "Manzana", ingredientes: ["frutas"], precio: 10 }
-  ];
+  // Simulación de plan base para 30 días - se debería pasar desde la Parte 3
+  // Para ejemplo usamos comidas random y rutina random, luego conectar con parte 3
 
-  // Ejercicios base para rutinas
-  const ejerciciosBase = {
-    pecho_tricep: [
-      "Press de banca", "Fondos", "Press inclinado", "Aperturas con mancuernas", "Flexiones",
-      "Extensión de tríceps", "Press cerrado", "Pullover", "Press con barra", "Press en máquina",
-      "Press con mancuernas", "Dips", "Press declinado", "Press con cable", "Patada de tríceps",
-      "Press en banco plano", "Press con barra Z", "Flexiones con aplauso", "Press con mancuernas alterno", "Fondos en paralelas"
-    ],
-    pierna_abdomen: [
-      "Sentadillas", "Peso muerto", "Zancadas", "Elevación de talones", "Prensa de piernas",
-      "Crunch abdominal", "Plancha", "Elevación de piernas", "Abdominales bicicleta", "Puente de glúteos",
-      "Sentadillas sumo", "Peso muerto rumano", "Step ups", "Crunch en banco", "Plancha lateral",
-      "Sentadilla búlgara", "Elevación de talones sentado", "Abdominales con balón", "Mountain climbers", "Russian twist"
-    ],
-    espalda_hombro_cuello: [
-      "Remo con barra", "Jalón al pecho", "Peso muerto", "Encogimientos de hombros", "Press militar",
-      "Remo con mancuernas", "Face pull", "Elevaciones laterales", "Remo en máquina", "Elevaciones frontales",
-      "Jalón con agarre cerrado", "Press Arnold", "Remo invertido", "Pájaros con mancuernas", "Encogimientos con barra",
-      "Press tras nuca", "Remo con cable", "Elevaciones posteriores", "Press con barra", "Remo con agarre supino"
-    ]
+  // Datos base comidas (nombre + gramos)
+  const samplePlan = [];
+  const mealsGrams = {
+    desayuno: 250,
+    comida: 350,
+    cena: 300,
+    snack: 150
   };
 
-  // Confeti efecto explosión chiquita al clicar botón
-  function explotarConfeti(element) {
-    const cantidad = 12;
-    for(let i=0; i<cantidad; i++) {
-      const confeti = document.createElement("div");
-      confeti.classList.add("confeti");
-      confeti.style.top = (element.getBoundingClientRect().top + element.offsetHeight/2) + "px";
-      confeti.style.left = (element.getBoundingClientRect().left + element.offsetWidth/2) + "px";
-      // Movimiento aleatorio
-      const tx = (Math.random()*200 - 100) + "px";
-      const ty = (Math.random()*-200) + "px";
-      confeti.style.setProperty('--tx', tx);
-      confeti.style.setProperty('--ty', ty);
-      document.body.appendChild(confeti);
-      setTimeout(() => confeti.remove(), 700);
-    }
-  }
+  // Rutinas por grupos musculares con repeticiones y descanso (segundos)
+  const routinesByDay = [
+    { grupo: "Pecho y Tríceps", ejercicios: 4, reps: "12-15", descanso: 60 },
+    { grupo: "Piernas y Abdomen", ejercicios: 5, reps: "15-20", descanso: 60 },
+    { grupo: "Espalda, Hombros y Cuello", ejercicios: 4, reps: "12-15", descanso: 75 },
+    { grupo: "Cardio y Estiramiento", ejercicios: 3, reps: "20-25", descanso: 45 }
+  ];
 
-  // Obtener valores del form y validación sencilla
-  const form = document.getElementById("formDatos");
-  form.addEventListener("submit", e => {
-    e.preventDefault();
+  // Función para generar plan simulado (reemplazar con plan real)
+  function generateSamplePlan() {
+    samplePlan.length = 0;
+    for(let day=1; day<=30; day++){
+      // Selección random de comida para demo
+      const desayuno = `Desayuno ejemplo ${day}`;
+      const comida = `Comida ejemplo ${day}`;
+      const cena = `Cena ejemplo ${day}`;
+      const snack = `Snack ejemplo ${day}`;
+      // Rutina rotativa entre grupos
+      const rutina = routinesByDay[(day-1) % routinesByDay.length];
 
-    // Mostrar loader
-    document.getElementById("loader").style.display = "block";
-
-    // Espera para simular carga (puedes cambiar a async si haces llamadas reales)
-    setTimeout(() => {
-      const formData = {
-        edad: Number(document.getElementById("edad").value),
-        sexo: document.getElementById("sexo").value,
-        altura: Number(document.getElementById("altura").value),
-        peso: Number(document.getElementById("peso").value),
-        presupuesto: Number(document.getElementById("presupuesto").value),
-        objetivo: document.getElementById("objetivo").value,
-        deporte: document.getElementById("deporte").value,
-        alergias: document.getElementById("alergias").value.toLowerCase().split(",").map(s => s.trim()).filter(s => s !== ""),
-        no_gustan: document.getElementById("noGustan").value.toLowerCase().split(",").map(s => s.trim()).filter(s => s !== ""),
-      };
-
-      generarMostrarPlan(formData);
-      document.getElementById("loader").style.display = "none";
-    }, 900);
-  });
-
-  // Filtrar comidas con alergias y que no gusten
-  function filtrarComidas(lista, alergias, noGustan) {
-    return lista.filter(item => {
-      for (const al of alergias) {
-        if(item.ingredientes.some(i => i.includes(al))) return false;
-      }
-      for (const ng of noGustan) {
-        if(item.nombre.toLowerCase().includes(ng)) return false;
-      }
-      return true;
-    });
-  }
-
-  // Variables para el plan actual
-  let planActual = null;
-  let nivelDificultad = 1;
-  const MAX_DIFICULTAD = 12;
-  let datosGlobales = null;
-
-  // Generar plan mes (30 días)
-  function generarPlanMes(formData) {
-    const comidasPorDia = (formData.objetivo === "subir_musculo") ? 4 : 3;
-    const presupuestoDiario = formData.presupuesto / 30;
-    const costoPorGramo = 0.05; // aprox
-    const gramosPorComida = Math.floor((presupuestoDiario / costoPorGramo) / comidasPorDia);
-
-    const desayunosFiltrados = filtrarComidas(desayunos, formData.alergias, formData.no_gustan);
-    const comidasFiltradas = filtrarComidas(comidas, formData.alergias, formData.no_gustan);
-    const cenasFiltradas = filtrarComidas(cenas, formData.alergias, formData.no_gustan);
-    const snacksFiltrados = filtrarComidas(snacks, formData.alergias, formData.no_gustan);
-
-    function obtenerAleatorio(arr) {
-      if(arr.length === 0) return { nombre: "No disponible", gramos: 0 };
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
-
-    const plan = [];
-    for(let i=1; i<=30; i++) {
-      plan.push({
-        dia: i,
-        desayuno: obtenerAleatorio(desayunosFiltrados),
-        comida: obtenerAleatorio(comidasFiltradas),
-        cena: obtenerAleatorio(cenasFiltradas),
-        snack: (comidasPorDia === 4) ? obtenerAleatorio(snacksFiltrados) : { nombre: "-", gramos: 0 },
-        gramos: gramosPorComida,
+      samplePlan.push({
+        desayuno: { nombre: desayuno, gramos: mealsGrams.desayuno },
+        comida: { nombre: comida, gramos: mealsGrams.comida },
+        cena: { nombre: cena, gramos: mealsGrams.cena },
+        snack: { nombre: snack, gramos: mealsGrams.snack },
+        rutina: `${rutina.grupo} - ${rutina.ejercicios} ejercicios, ${rutina.reps} reps, ${rutina.descanso}s descanso`
       });
     }
-    return plan;
   }
 
-  // Generar rutina del día (varía con dificultad y día)
-  function generarRutinaDia(dia, nivel) {
-    // Nivel de dificultad afecta reps y descanso
-    const repsBase = 10 + nivel*2;
-    const descansoBase = Math.max(15, 45 - nivel*3);
+  // Mostrar plan en tabla
+  function renderPlan() {
+    const tbody = document.querySelector("#planTable tbody");
+    tbody.innerHTML = ""; // limpia tabla
 
-    // Ciclo por días para variar grupos musculares
-    let grupo = "";
-    if(dia % 3 === 1) grupo = "pecho_tricep";
-    else if(dia % 3 === 2) grupo = "pierna_abdomen";
-    else grupo = "espalda_hombro_cuello";
-
-    // Selección aleatoria 3 ejercicios
-    const ejercicios = [];
-    while(ejercicios.length < 3) {
-      const ejercicio = ejerciciosBase[grupo][Math.floor(Math.random() * ejerciciosBase[grupo].length)];
-      if(!ejercicios.includes(ejercicio)) ejercicios.push(ejercicio);
-    }
-
-    // Formato para la tabla: Ejercicio 1: reps / descanso; Ejercicio 2: reps / descanso ...
-    const rutinasString = ejercicios.map(ej => `${ej} (${repsBase} reps / ${descansoBase}s)`).join(" | ");
-
-    return rutinasString;
-  }
-
-  // Mostrar plan en tabla y botones
-  function generarMostrarPlan(formData) {
-    datosGlobales = formData;
-    nivelDificultad = 1;
-
-    planActual = generarPlanMes(formData);
-    actualizarTablaYBotones();
-    document.getElementById("botonesPlan").style.display = "block";
-  }
-
-  // Actualizar tabla y texto dificultad
-  function actualizarTablaYBotones() {
-    const tbody = document.querySelector("#planMes tbody");
-    tbody.innerHTML = "";
-
-    for(let diaObj of planActual) {
+    samplePlan.forEach((dayPlan, index) => {
       const tr = document.createElement("tr");
 
-      const rutina = generarRutinaDia(diaObj.dia, nivelDificultad);
+      // Día
+      const tdDay = document.createElement("td");
+      tdDay.textContent = index + 1;
+      tr.appendChild(tdDay);
 
-      tr.innerHTML = `
-        <td>${diaObj.dia}</td>
-        <td>${diaObj.desayuno.nombre} (${diaObj.gramos}g)</td>
-        <td>${diaObj.comida.nombre} (${diaObj.gramos}g)</td>
-        <td>${diaObj.cena.nombre} (${diaObj.gramos}g)</td>
-        <td>${diaObj.snack.nombre ? diaObj.snack.nombre + " ("+diaObj.gramos+"g)" : "-"}</td>
-        <td style="text-align:left; font-size:0.8rem;">${rutina}</td>
-      `;
+      // Desayuno
+      const tdDesayuno = document.createElement("td");
+      tdDesayuno.textContent = `${dayPlan.desayuno.nombre} (${dayPlan.desayuno.gramos}g)`;
+      tr.appendChild(tdDesayuno);
+
+      // Comida
+      const tdComida = document.createElement("td");
+      tdComida.textContent = `${dayPlan.comida.nombre} (${dayPlan.comida.gramos}g)`;
+      tr.appendChild(tdComida);
+
+      // Cena
+      const tdCena = document.createElement("td");
+      tdCena.textContent = `${dayPlan.cena.nombre} (${dayPlan.cena.gramos}g)`;
+      tr.appendChild(tdCena);
+
+      // Snack
+      const tdSnack = document.createElement("td");
+      tdSnack.textContent = `${dayPlan.snack.nombre} (${dayPlan.snack.gramos}g)`;
+      tr.appendChild(tdSnack);
+
+      // Rutina
+      const tdRutina = document.createElement("td");
+      tdRutina.textContent = dayPlan.rutina;
+      tr.appendChild(tdRutina);
+
       tbody.appendChild(tr);
-    }
-    document.getElementById("planMes").style.display = "table";
-
-    // Actualiza nivel dificultad en texto
-    document.getElementById("nivelDisplay").textContent = "Nivel dificultad: " + nivelDificultad;
+    });
   }
 
-  // Botones funcionalidad
-  document.getElementById("btnCambiarComida").addEventListener("click", e => {
+  // Animación explosión pequeña
+  function smallExplosion(x, y) {
+    const explosion = document.createElement("div");
+    explosion.classList.add("explosion");
+    explosion.style.left = `${x - 15}px`;
+    explosion.style.top = `${y - 15}px`;
+    document.body.appendChild(explosion);
+    explosion.addEventListener("animationend", () => explosion.remove());
+  }
+
+  // Cambiar comidas: genera nuevo plan comidas y refresca tabla
+  document.getElementById("changeMealsBtn").addEventListener("click", (e) => {
     e.preventDefault();
-    explotarConfeti(e.target);
-    // Cambiar comidas (mezclar aleatorio las comidas)
-    planActual = planActual.map(dia => {
-      dia.comida = comidas[Math.floor(Math.random() * comidas.length)];
-      return dia;
-    });
-    actualizarTablaYBotones();
+    smallExplosion(e.clientX, e.clientY);
+
+    // Aquí se podría llamar a una función que genera plan comida nueva
+    // Por ahora solo regeneramos el plan simulado
+    generateSamplePlan();
+    renderPlan();
   });
 
-  document.getElementById("btnCambiarRutina").addEventListener("click", e => {
+  // Cambiar rutina: cambia rutina rotativa para demo y refresca tabla
+  document.getElementById("changeRoutineBtn").addEventListener("click", (e) => {
     e.preventDefault();
-    explotarConfeti(e.target);
-    // Solo se refresca la tabla (rutinas cambian cada vez que se genera)
-    actualizarTablaYBotones();
+    smallExplosion(e.clientX, e.clientY);
+
+    // Cambiamos rutinas: simplemente cambiamos el orden para simular cambio
+    routinesByDay.push(routinesByDay.shift());
+    generateSamplePlan();
+    renderPlan();
   });
 
-  document.getElementById("btnSubirDificultad").addEventListener("click", e => {
+  // Al cargar la página
+  generateSamplePlan();
+  renderPlan();
+</script>
+<!-- Librería jsPDF CDN para exportar PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<div style="text-align:center; margin-bottom: 3rem;">
+  <button id="savePlanBtn" class="btn-explosion" title="Guardar plan">💾 Guardar Plan</button>
+  <button id="loadPlanBtn" class="btn-explosion" title="Cargar plan guardado">📂 Cargar Plan</button>
+  <button id="exportPdfBtn" class="btn-explosion" title="Exportar plan a PDF">📄 Exportar PDF</button>
+</div>
+
+<script>
+  // Guardar plan en localStorage
+  document.getElementById("savePlanBtn").addEventListener("click", (e) => {
     e.preventDefault();
-    explotarConfeti(e.target);
-    if(nivelDificultad < MAX_DIFICULTAD) {
-      nivelDificultad++;
-      actualizarTablaYBotones();
-    } else {
-      alert("¡Ya alcanzaste el nivel máximo de dificultad!");
+    smallExplosion(e.clientX, e.clientY);
+
+    try {
+      localStorage.setItem("nutriJosuePlan", JSON.stringify(samplePlan));
+      alert("Plan guardado exitosamente!");
+    } catch (err) {
+      alert("Error guardando plan: " + err.message);
     }
   });
 
-</script>
+  // Cargar plan de localStorage
+  document.getElementById("loadPlanBtn").addEventListener("click", (e) => {
+    e.preventDefault();
+    smallExplosion(e.clientX, e.clientY);
 
-</body>
-</html>
+    try {
+      const storedPlan = localStorage.getItem("nutriJosuePlan");
+      if (storedPlan) {
+        const planData = JSON.parse(storedPlan);
+        if (Array.isArray(planData)) {
+          samplePlan.length = 0;
+          samplePlan.push(...planData);
+          renderPlan();
+          alert("Plan cargado correctamente!");
+        } else {
+          alert("El plan guardado no es válido.");
+        }
+      } else {
+        alert("No hay plan guardado.");
+      }
+    } catch (err) {
+      alert("Error cargando plan: " + err.message);
+    }
+  });
+
+  // Exportar tabla a PDF con jsPDF
+  document.getElementById("exportPdfBtn").addEventListener("click", async (e) => {
+    e.preventDefault();
+    smallExplosion(e.clientX, e.clientY);
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('l', 'pt', 'a4');
+    const margin = 20;
+    const startY = 50;
+
+    doc.setFontSize(18);
+    doc.setTextColor("#2e7d32");
+    doc.text("NutriJB - Plan Mensual Nutricional y Rutina", margin, 30);
+    doc.setFontSize(12);
+    doc.setTextColor("#1b3a1a");
+    doc.text("Your life Your way Your Diet", margin, 45);
+
+    // Preparamos la data para PDF
+    const columns = [
+      "Día",
+      "Desayuno (g)",
+      "Comida (g)",
+      "Cena (g)",
+      "Snack (g)",
+      "Rutina (Reps / Descanso)"
+    ];
+
+    const rows = samplePlan.map((dayPlan, index) => [
+      index + 1,
+      `${dayPlan.desayuno.nombre} (${dayPlan.desayuno.gramos}g)`,
+      `${dayPlan.comida.nombre} (${dayPlan.comida.gramos}g)`,
+      `${dayPlan.cena.nombre} (${dayPlan.cena.gramos}g)`,
+      `${dayPlan.snack.nombre} (${dayPlan.snack.gramos}g)`,
+      dayPlan.rutina
+    ]);
+
+    // Usamos autoTable para tabla
+    // Si quieres, puedes añadir el plugin jsPDF autotable, pero para simple, hacemos una tabla manual:
+    let y = startY;
+    const lineHeight = 18;
+    const pageHeight = doc.internal.pageSize.height;
+
+    // Escribir encabezados
+    columns.forEach((col, i) => {
+      doc.text(col, margin + i*90, y);
+    });
+    y += lineHeight;
+
+    // Escribir filas (si es mucha info, puede ser lento)
+    for (let i=0; i<rows.length; i++) {
+      const row = rows[i];
+      row.forEach((cell, j) => {
+        const text = cell.length > 30 ? cell.substring(0, 27) + "..." : cell;
+        doc.text(text, margin + j*90, y);
+      });
+      y += lineHeight;
+      if (y > pageHeight - 40) {
+        doc.addPage();
+        y = startY;
+      }
+    }
+
+    doc.save("NutriJB_Plan_Mensual.pdf");
+  });
+</script>
+<script>
+// LISTADO SIMPLIFICADO DE ALIMENTOS - solo ejemplos, pero en real agrega 150+ como pediste
+
+const alimentos = {
+  desayunos: [
+    {nombre: "Avena con frutas", alergias:["gluten"], calorias:350, precio:20, gramos:150},
+    {nombre: "Huevos revueltos", alergias:["huevo"], calorias:300, precio:25, gramos:120},
+    {nombre: "Yogur natural con nueces", alergias:["lacteos","nuez"], calorias:250, precio:30, gramos:130},
+    // Agrega más...
+  ],
+  comidas: [
+    {nombre: "Pechuga de pollo a la plancha", alergias:[], calorias:400, precio:50, gramos:180},
+    {nombre: "Ensalada de atún", alergias:["pescado"], calorias:350, precio:45, gramos:170},
+    {nombre: "Tofu salteado con verduras", alergias:["soja"], calorias:300, precio:40, gramos:160},
+    // Agrega más...
+  ],
+  cenas: [
+    {nombre: "Sopa de verduras", alergias:[], calorias:200, precio:35, gramos:140},
+    {nombre: "Filete de salmón", alergias:["pescado"], calorias:450, precio:60, gramos:150},
+    {nombre: "Ensalada César", alergias:["lacteos","gluten"], calorias:300, precio:40, gramos:130},
+    // Agrega más...
+  ],
+  snacks: [
+    {nombre: "Almendras", alergias:["nuez"], calorias:150, precio:15, gramos:50},
+    {nombre: "Fruta fresca", alergias:[], calorias:100, precio:10, gramos:80},
+    {nombre: "Barra de proteína", alergias:["soja","lacteos"], calorias:200, precio:25, gramos:60},
+    // Agrega más...
+  ]
+};
+
+// Función para filtrar alimentos según alergias, gustos y enfermedades
+function filtrarAlimentos(lista, alergiasUsuario, noGusta) {
+  return lista.filter(item => {
+    // Si tiene alguna alergia del usuario
+    for (const alergia of alergiasUsuario) {
+      if (item.alergias.includes(alergia.toLowerCase())) return false;
+    }
+    // Si el alimento está en la lista de que no gusta
+    if (noGusta.some(ng => ng.toLowerCase() === item.nombre.toLowerCase())) return false;
+    return true;
+  });
+}
+
+// Ajustar porciones segun objetivo (bajar grasa = 3 comidas, subir musculo = 4 comidas)
+function ajustarPorciones(gramos, objetivo) {
+  if (objetivo === "bajar grasa") {
+    return gramos * 0.8; // reducir un poco por ejemplo
+  } else if (objetivo === "subir musculo") {
+    return gramos * 1.2; // aumentar porciones
+  }
+  return gramos;
+}
+
+// Generar plan diario con presupuesto y filtros
+function generarPlanMes(altura, peso, edad, sexo, objetivo, presupuestoMensual, alergiasUsuario, noGusta) {
+  const dias = 30;
+  const planMes = [];
+
+  // Calculo presupuesto diario ajustado para comidas
+  // Asumiendo 3 comidas + snack si subir músculo
+  const comidasDiarias = objetivo === "subir musculo" ? 4 : 3;
+  const presupuestoDiario = presupuestoMensual / 30;
+
+  // Filtrar listas según alergias y gustos
+  const desayunosFiltrados = filtrarAlimentos(alimentos.desayunos, alergiasUsuario, noGusta);
+  const comidasFiltradas = filtrarAlimentos(alimentos.comidas, alergiasUsuario, noGusta);
+  const cenasFiltradas = filtrarAlimentos(alimentos.cenas, alergiasUsuario, noGusta);
+  const snacksFiltrados = filtrarAlimentos(alimentos.snacks, alergiasUsuario, noGusta);
+
+  for (let i=0; i<dias; i++) {
+    // Elegir aleatoriamente comidas dentro del presupuesto
+    let desayuno = elegirComidaPresupuesto(desayunosFiltrados, presupuestoDiario * 0.25);
+    let comida = elegirComidaPresupuesto(comidasFiltradas, presupuestoDiario * 0.4);
+    let cena = elegirComidaPresupuesto(cenasFiltradas, presupuestoDiario * 0.25);
+    let snack = (objetivo === "subir musculo") ? elegirComidaPresupuesto(snacksFiltrados, presupuestoDiario * 0.1) : {nombre:"-", gramos:0};
+
+    // Ajustar porciones según objetivo
+    desayuno.gramos = Math.round(ajustarPorciones(desayuno.gramos, objetivo));
+    comida.gramos = Math.round(ajustarPorciones(comida.gramos, objetivo));
+    cena.gramos = Math.round(ajustarPorciones(cena.gramos, objetivo));
+    if (snack.nombre !== "-") snack.gramos = Math.round(ajustarPorciones(snack.gramos, objetivo));
+
+    // Generar rutina según día y dificultad (puedes usar la rutina base que tienes)
+    const rutina = generarRutinaDia(i, dificultadActual);
+
+    planMes.push({
+      desayuno,
+      comida,
+      cena,
+      snack,
+      rutina
+    });
+  }
+
+  return planMes;
+}
+
+// Elegir comida que no pase el presupuesto asignado (simplemente el primero que calce, o el menos caro)
+function elegirComidaPresupuesto(lista, presupuesto) {
+  const opciones = lista.filter(item => item.precio <= presupuesto);
+  if (opciones.length === 0) {
+    // Si no hay opción, devolver la comida menos cara
+    return lista.reduce((min, item) => item.precio < min.precio ? item : min, lista[0]);
+  }
+  // Elegir aleatoriamente entre opciones dentro del presupuesto
+  return opciones[Math.floor(Math.random()*opciones.length)];
+}
+
+// Rutina base simplificada para ejemplo, ajusta segun dificultadActual
+function generarRutinaDia(dia, dificultad) {
+  // Ejemplo: 3 grupos musculares alternados, reps y descanso según dificultad
+  const grupos = [
+    "Pecho y Tríceps",
+    "Piernas y Abdomen",
+    "Espalda y Hombro",
+    "Descanso Activo"
+  ];
+
+  const grupo = grupos[dia % grupos.length];
+
+  // Reps y descanso varían con dificultad (1 a 4)
+  const repsBase = [12, 15, 18, 20];
+  const descansoBase = [60, 45, 30, 20]; // segundos
+
+  return `${grupo} - ${repsBase[dificultad-1]} reps - ${descansoBase[dificultad-1]} seg descanso`;
+}
+
+// Variables globales para demo
+let dificultadActual = 1;
+let alturaDemo = 170;
+let pesoDemo = 70;
+let edadDemo = 25;
+let sexoDemo = "masculino";
+let objetivoDemo = "bajar grasa";
+let presupuestoDemo = 3000; // pesos mensuales
+let alergiasDemo = ["huevo", "lacteos"];
+let noGustaDemo = ["Ensalada César"];
+
+// Al generar o cambiar opciones, llama a:
+const samplePlan = generarPlanMes(alturaDemo, pesoDemo, edadDemo, sexoDemo, objetivoDemo, presupuestoDemo, alergiasDemo, noGustaDemo);
+
+renderPlan();
+
+</script>
+<style>
+  /* Fuente moderna y limpia */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+  }
+
+  header {
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    user-select: none;
+  }
+
+  header small {
+    display: block;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-top: 5px;
+    font-style: italic;
+    color: #ffd700;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 20px auto;
+    background: rgba(0,0,0,0.5);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 15px 3px #00ffcc;
+  }
+
+  button {
+    cursor: pointer;
+    background: linear-gradient(45deg, #00ffcc, #006666);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-weight: 600;
+    padding: 15px 30px;
+    margin: 10px;
+    transition: transform 0.15s ease-in-out, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,255,204,0.7);
+    user-select: none;
+  }
+  button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,255,204,0.9);
+  }
+
+  /* Contenedor de la tabla para scroll horizontal */
+  .tabla-container {
+    overflow-x: auto;
+    max-height: 500px;
+    margin-top: 20px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #00ffcc;
+  }
+
+  th, td {
+    border: 1px solid #00ffcc;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  th {
+    background: #003333;
+  }
+
+  /* Animacion explosion chiquita */
+  .explode {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: explodeAnim 0.6s forwards;
+    background: radial-gradient(circle, #00ffcc 0%, transparent 80%);
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+    z-index: 9999;
+  }
+
+  @keyframes explodeAnim {
+    0% {
+      transform: scale(0.3);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  footer {
+    text-align: center;
+    margin: 25px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #00ffcc;
+    user-select: none;
+  }
+</style>
+
+<header>
+  NutriJB
+  <small>Your life Your way Your Diet</small>
+</header>
+
+<main>
+  <div>
+    <button id="btnCambiarComidas">Cambiar Comidas</button>
+    <button id="btnCambiarRutina">Cambiar Rutina</button>
+    <button id="btnAumentarDificultad">Subir Dificultad Ejercicios</button>
+    <button id="btnDisminuirDificultad">Bajar Dificultad Ejercicios</button>
+    <button id="btnCambiarMes">Cambiar Mes (1-12)</button>
+  </div>
+
+  <div class="tabla-container">
+    <table id="tablaPlan">
+      <!-- Aquí se carga la tabla generada -->
+    </table>
+  </div>
+</main>
+
+<footer>
+  ¡Vamos por esa beca del Tec, pavito! 🔥 YARBIS
+</footer>
+
+<script>
+  // Función para crear animación de explosión chiquita en el botón clickeado
+  function explosionEffect(event) {
+    const btn = event.currentTarget;
+    const rect = btn.getBoundingClientRect();
+
+    const explosion = document.createElement('div');
+    explosion.classList.add('explode');
+
+    // Posición: centro del botón
+    explosion.style.left = (event.clientX - rect.left - 25) + 'px';
+    explosion.style.top = (event.clientY - rect.top - 25) + 'px';
+
+    btn.appendChild(explosion);
+
+    setTimeout(() => {
+      explosion.remove();
+    }, 600);
+  }
+
+  // Variables globales para demo, puedes conectar a inputs reales luego
+  let dificultadActual = 1; // 1 a 4
+  let mesActual = 1;
+  let alturaDemo = 170;
+  let pesoDemo = 70;
+  let edadDemo = 25;
+  let sexoDemo = "masculino";
+  let objetivoDemo = "bajar grasa"; // o "subir musculo"
+  let presupuestoDemo = 3000; // pesos mensuales
+  let alergiasDemo = ["huevo", "lacteos"];
+  let noGustaDemo = ["Ensalada César"];
+
+  // Ya tienes la función generarPlanMes en la parte 6
+  // Aquí la usamos para generar y renderizar la tabla para un mes dado
+
+  function renderPlan(mes = 1) {
+    // Para demo: solo generamos 30 días del mes
+    const plan = generarPlanMes(alturaDemo, pesoDemo, edadDemo, sexoDemo, objetivoDemo, presupuestoDemo, alergiasDemo, noGustaDemo);
+    const tabla = document.getElementById('tablaPlan');
+
+    // Crear encabezados
+    let html = `<thead><tr>
+      <th>Día</th>
+      <th>Desayuno (g)</th>
+      <th>Comida (g)</th>
+      <th>Cena (g)</th>
+      <th>Snack (g)</th>
+      <th>Rutina y Ejercicios</th>
+    </tr></thead><tbody>`;
+
+    plan.forEach((diaPlan, i) => {
+      html += `<tr>
+        <td>${i + 1}</td>
+        <td>${diaPlan.desayuno.nombre} (${diaPlan.desayuno.gramos}g)</td>
+        <td>${diaPlan.comida.nombre} (${diaPlan.comida.gramos}g)</td>
+        <td>${diaPlan.cena.nombre} (${diaPlan.cena.gramos}g)</td>
+        <td>${diaPlan.snack.nombre} ${diaPlan.snack.gramos ? `(${diaPlan.snack.gramos}g)` : ''}</td>
+        <td>${diaPlan.rutina}</td>
+      </tr>`;
+    });
+    html += '</tbody>';
+
+    tabla.innerHTML = html;
+  }
+
+  // Botones y eventos
+  document.getElementById('btnCambiarComidas').addEventListener('click', e => {
+    explosionEffect(e);
+    // Cambiar comidas aleatoriamente (cambia lista de noGusta para simular cambio)
+    noGustaDemo = noGustaDemo.length === 0 ? ["Almendras"] : [];
+    renderPlan(mesActual);
+  });
+
+  document.getElementById('btnCambiarRutina').addEventListener('click', e => {
+    explosionEffect(e);
+    // Cambia rutina: para demo solo cambia dificultad para variar rutina
+    dificultadActual = dificultadActual === 4 ? 1 : dificultadActual + 1;
+    renderPlan(mesActual);
+  });
+
+  document.getElementById('btnAumentarDificultad').addEventListener('click', e => {
+    explosionEffect(e);
+    if(dificultadActual < 4) dificultadActual++;
+    renderPlan(mesActual);
+  });
+
+  document.getElementById('btnDisminuirDificultad').addEventListener('click', e => {
+    explosionEffect(e);
+    if(dificultadActual > 1) dificultadActual--;
+    renderPlan(mesActual);
+  });
+
+  document.getElementById('btnCambiarMes').addEventListener('click', e => {
+    explosionEffect(e);
+    mesActual++;
+    if(mesActual > 12) mesActual = 1;
+    // En tu sistema podrías generar planes diferentes para cada mes si quieres
+    renderPlan(mesActual);
+  });
+
+  // Render inicial
+  renderPlan(mesActual);
+
+</script>
