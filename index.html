@@ -54,9 +54,17 @@
     border-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   button:hover {
     background-color: #004d40;
+  }
+  button.red {
+    background-color: #c62828;
+    margin-left: 10px;
+  }
+  button.red:hover {
+    background-color: #8b0000;
   }
   .output {
     margin-top: 30px;
@@ -65,7 +73,9 @@
     border-radius: 12px;
     border: 1px solid #c5e1a5;
     white-space: pre-wrap;
-    font-family: monospace;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    color: #2e7d32;
   }
 </style>
 </head>
@@ -101,17 +111,44 @@
     <option value="mantener">Mantenerme saludable</option>
   </select>
 
+  <label for="activityTime">Tiempo de actividad deportiva diaria (minutos)</label>
+  <input type="number" id="activityTime" min="0" max="360" placeholder="Ej. 45" />
+
+  <label for="sportType">Tipo de deporte</label>
+  <select id="sportType">
+    <option value="ninguno">Ninguno / Solo ejercicio general</option>
+    <option value="natacion">Natación</option>
+    <option value="correr">Correr</option>
+    <option value="futbol">Fútbol</option>
+    <option value="basquetbol">Basquetbol</option>
+    <option value="pesas">Pesas / Gimnasio</option>
+    <option value="otro">Otro</option>
+  </select>
+
+  <label for="changeDiet">¿Quieres cambiar la dieta?</label>
+  <select id="changeDiet">
+    <option value="no">No</option>
+    <option value="si">Sí</option>
+  </select>
+
+  <label for="changeRoutine">¿Quieres cambiar la rutina de ejercicios?</label>
+  <select id="changeRoutine">
+    <option value="no">No</option>
+    <option value="si">Sí</option>
+  </select>
+
   <label for="food">Alimentos que no me son de agrado (separa con coma)</label>
   <textarea id="food" placeholder="Ej. Brócoli, pescado, huevo..."></textarea>
 
   <button onclick="generarPlan()">Generar Plan de Nutrición</button>
-  <button onclick="reiniciar()" style="background:#c62828; margin-left:10px;">Rehacer Plan</button>
+  <button onclick="reiniciar()" class="red">Rehacer Plan</button>
 
   <div id="resultado" class="output"></div>
 </main>
 
 <script>
-  const desayunos = [
+  // Listas con 30 opciones para comidas y rutinas
+  const desayunos = [ /* mismo array que antes con 30 desayunos */ 
     "Avena (50g) con manzana (100g)",
     "Yogur griego bajo en grasa (150g) con chía (15g)",
     "Huevos revueltos (2 huevos) con espinacas (50g) y jitomate (50g)",
@@ -143,8 +180,7 @@
     "Tostadas francesas integrales (2 piezas) con canela",
     "Pan de avena (2 rebanadas) con mantequilla de almendra (15g)"
   ];
-
-  const comidas = [
+  const comidas = [ /* 30 comidas... */
     "Pechuga de pollo asada (150g) con ensalada (100g)",
     "Tacos de lechuga (3 piezas) con atún (120g)",
     "Carne molida magra (150g) con arroz integral (100g) y vegetales (100g)",
@@ -176,8 +212,7 @@
     "Pechuga de pollo en salsa verde (150g) con arroz (100g)",
     "Arrachera (150g) con cebollitas cambray (100g)"
   ];
-
-  const cenas = [
+  const cenas = [ /* 30 cenas... */
     "Sopa de verduras con lentejas (1 taza)",
     "Ensalada de garbanzos con jitomate y pepino (150g)",
     "Crema de calabaza con semillas (1 taza)",
@@ -210,91 +245,233 @@
     "Tostadas francesas integrales (2 piezas)"
   ];
 
-  const ejercicios = {
-    bajar: [
-      "30 minutos de caminata rápida o trote suave",
-      "3 series de 15 sentadillas",
-      "3 series de 10 flexiones",
-      "2 series de plancha de 30 segundos",
-      "Estiramientos de cuerpo completo (10 minutos)"
-    ],
-    subir: [
-      "4 series de 8-10 repeticiones de press de banca",
-      "4 series de 10-12 repeticiones de sentadillas con peso",
-      "3 series de 12 curls de bíceps",
-      "3 series de 12 press militar",
-      "3 series de plancha de 1 minuto"
-    ],
-    mantener: [
-      "20 minutos de cardio moderado (ciclismo, natación)",
-      "3 series de 12 sentadillas",
-      "3 series de 10 flexiones",
-      "3 series de plancha de 45 segundos",
-      "Estiramientos y movilidad (10 minutos)"
-    ]
+  // Rutinas extendidas por objetivo y deporte (ejemplo simple)
+  const rutinas = {
+    bajar: {
+      general: [
+        "30 minutos de caminata rápida",
+        "3 series de 15 sentadillas",
+        "3 series de 10 flexiones",
+        "2 series de plancha de 30 segundos",
+        "Estiramientos (10 minutos)"
+      ],
+      natacion: [
+        "45 minutos de nado continuo suave",
+        "Ejercicios de patada 4x10 minutos",
+        "3 series de abdominales",
+        "Estiramientos de hombros y espalda",
+        "20 minutos de bicicleta estática"
+      ],
+      correr: [
+        "30 minutos de carrera suave",
+        "Intervalos 5x1 minuto rápido/1 lento",
+        "3 series de sentadillas",
+        "Estiramientos de piernas",
+        "Plancha de 1 minuto"
+      ],
+      futbol: [
+        "Calentamiento con trote 10 minutos",
+        "Ejercicios de velocidad 5x20 metros",
+        "Pases y control de balón 15 minutos",
+        "3 series de saltos pliométricos",
+        "Estiramientos"
+      ],
+      basquetbol: [
+        "Trote 15 minutos",
+        "Ejercicios de dribbling 10 minutos",
+        "Saltos verticales 3x10",
+        "Plancha 3x40 segundos",
+        "Estiramientos de cuerpo completo"
+      ],
+      pesas: [
+        "3 series de press de banca 10 repeticiones",
+        "3 series de sentadillas con peso 10 repeticiones",
+        "3 series de curls de bíceps 12 repeticiones",
+        "3 series de press militar 10 repeticiones",
+        "Estiramientos"
+      ],
+      otro: [
+        "Ejercicio general de 30 minutos",
+        "Estiramientos",
+        "Ejercicios de fuerza básica",
+        "Actividades de movilidad",
+        "Respiración y relajación"
+      ]
+    },
+    subir: {
+      general: [
+        "4 series de press de banca 8-10 repeticiones",
+        "4 series de sentadillas con peso 10-12 repeticiones",
+        "3 series de curls de bíceps 12 repeticiones",
+        "3 series de press militar 12 repeticiones",
+        "3 series de plancha 1 minuto"
+      ],
+      natacion: [
+        "Nado de fuerza 30 minutos",
+        "Entrenamiento con aletas 4x10 minutos",
+        "Trabajo de core 4 series",
+        "Flexiones 3x15",
+        "Estiramientos"
+      ],
+      correr: [
+        "Entrenamiento de intervalos 6x2 minutos rápido",
+        "Sentadillas con peso 4x12",
+        "Ejercicios de core 3 series",
+        "Press de banca 4x10",
+        "Estiramientos"
+      ],
+      futbol: [
+        "Entrenamiento de fuerza 4x10 repeticiones",
+        "Ejercicios de agilidad y velocidad",
+        "Pases con resistencia",
+        "Saltos pliométricos 3x12",
+        "Estiramientos"
+      ],
+      basquetbol: [
+        "Rutina de fuerza y salto",
+        "Ejercicios de dribbling con peso",
+        "Saltos verticales 4x12",
+        "Plancha con peso 3x1 min",
+        "Estiramientos"
+      ],
+      pesas: [
+        "Rutina intensa de gimnasio",
+        "5 series de press banca",
+        "5 series de sentadillas con peso",
+        "3 series de curls de bíceps pesados",
+        "Estiramientos y descanso"
+      ],
+      otro: [
+        "Rutina general para subir masa muscular",
+        "Ejercicios de fuerza básica",
+        "Movilidad y flexibilidad",
+        "Descanso activo",
+        "Nutrición adecuada"
+      ]
+    },
+    mantener: {
+      general: [
+        "20 minutos de cardio moderado",
+        "3 series de 12 sentadillas",
+        "3 series de 10 flexiones",
+        "3 series de plancha de 45 segundos",
+        "Estiramientos y movilidad"
+      ],
+      natacion: [
+        "Nado suave 30 minutos",
+        "Ejercicios de técnica 20 minutos",
+        "Trabajo de core 3 series",
+        "Estiramientos",
+        "Relajación"
+      ],
+      correr: [
+        "Carrera suave 30 minutos",
+        "Ejercicios de estiramiento",
+        "Trabajo de fuerza ligera",
+        "Plancha 3x30 seg",
+        "Movilidad"
+      ],
+      futbol: [
+        "Calentamiento con trote ligero",
+        "Ejercicios de pases y control",
+        "Movilidad articular",
+        "Estiramientos",
+        "Descanso activo"
+      ],
+      basquetbol: [
+        "Trote suave 15 minutos",
+        "Dribbling sin peso",
+        "Saltos suaves",
+        "Estiramientos",
+        "Movilidad"
+      ],
+      pesas: [
+        "Rutina ligera de fuerza",
+        "3 series de press banca",
+        "3 series de sentadillas sin peso",
+        "Plancha 3x30 seg",
+        "Estiramientos"
+      ],
+      otro: [
+        "Ejercicio general moderado",
+        "Movilidad",
+        "Estiramientos",
+        "Respiración",
+        "Relajación"
+      ]
+    }
   };
 
-  const comidaExtra = "Batido de proteína con 200 ml de leche y 1 plátano mediano";
-
   function generarPlan() {
-    const age = document.getElementById("age").value.trim();
-    const weight = document.getElementById("weight").value.trim();
-    const height = document.getElementById("height").value.trim();
+    const age = document.getElementById("age").value;
+    const weight = document.getElementById("weight").value;
+    const height = document.getElementById("height").value;
     const sex = document.getElementById("sex").value;
-    const condition = document.getElementById("condition").value.trim();
+    const condition = document.getElementById("condition").value || "Ninguna";
     const goal = document.getElementById("goal").value;
-    const foodInput = document.getElementById("food").value.toLowerCase();
-    const restricciones = foodInput ? foodInput.split(",").map(f => f.trim()) : [];
+    const activityTime = document.getElementById("activityTime").value || 0;
+    const sportType = document.getElementById("sportType").value;
+    const changeDiet = document.getElementById("changeDiet").value;
+    const changeRoutine = document.getElementById("changeRoutine").value;
+    const dislikedFoods = document.getElementById("food").value;
 
     if (!age || !weight || !height) {
-      alert("Por favor, completa edad, peso y estatura.");
+      alert("Por favor completa Edad, Peso y Estatura.");
       return;
     }
 
-    let plan = `Tu plan de alimentación:\n\n`;
-    plan += `Edad: ${age} años\nPeso: ${weight} kg\nEstatura: ${height} cm\nSexo: ${sex}\n`;
-    if(condition) plan += `Condición o alergias: ${condition}\n`;
-    plan += `Objetivo: ${goal.charAt(0).toUpperCase() + goal.slice(1)}\n\n`;
-
-    function filtrarYSeleccionar(lista, restricciones, n) {
-      let filtrado = lista.filter(item => !restricciones.some(r => item.toLowerCase().includes(r)));
-      if(filtrado.length < n) return filtrado;
-      const seleccion = [];
-      while(seleccion.length < n) {
-        const rand = filtrado[Math.floor(Math.random() * filtrado.length)];
-        if(!seleccion.includes(rand)) seleccion.push(rand);
+    // Selección aleatoria de comidas sin repetir (para desayuno, comida y cena)
+    function getRandomMeals(arr, count) {
+      const selected = [];
+      const copy = [...arr];
+      for (let i = 0; i < count; i++) {
+        if (copy.length === 0) break;
+        const idx = Math.floor(Math.random() * copy.length);
+        selected.push(copy.splice(idx, 1)[0]);
       }
-      return seleccion;
+      return selected;
     }
 
-    const desayunoPlan = filtrarYSeleccionar(desayunos, restricciones, 3);
-    const comidaPlan = filtrarYSeleccionar(comidas, restricciones, 3);
-    const cenaPlan = filtrarYSeleccionar(cenas, restricciones, 3);
+    const desayunoSeleccionado = getRandomMeals(desayunos, 1)[0];
+    const comidaSeleccionada = getRandomMeals(comidas, 1)[0];
+    const cenaSeleccionada = getRandomMeals(cenas, 1)[0];
 
-    plan += `Desayuno (elige uno):\n- ${desayunoPlan.join("\n- ")}\n\n`;
-    plan += `Comida (elige uno):\n- ${comidaPlan.join("\n- ")}\n\n`;
+    // Rutina según objetivo y deporte
+    const rutinaList = rutinas[goal][sportType] || rutinas[goal]["general"];
 
-    if(goal === "subir") {
-      plan += `Comida extra para ganar masa muscular:\n- ${comidaExtra}\n\n`;
-    }
+    // Generar texto del plan
+    let textoPlan = `--- PLAN DE NUTRICIÓN Y EJERCICIO ---\n\n`;
+    textoPlan += `Edad: ${age} años\nPeso: ${weight} kg\nEstatura: ${height} cm\nSexo: ${sex}\nCondiciones: ${condition}\nObjetivo: ${goal === "bajar" ? "Bajar de peso" : goal === "subir" ? "Subir masa muscular" : "Mantenerme saludable"}\nActividad deportiva diaria: ${activityTime} minutos\nDeporte: ${sportType === "ninguno" ? "Ejercicio general" : sportType.charAt(0).toUpperCase() + sportType.slice(1)}\n\n`;
 
-    plan += `Cena (elige uno):\n- ${cenaPlan.join("\n- ")}\n\n`;
+    textoPlan += `Alimentos que no te gustan: ${dislikedFoods ? dislikedFoods : "Ninguno"}\n\n`;
 
-    plan += `Rutina recomendada de ejercicios:\n`;
-    ejercicios[goal].forEach((ej, i) => {
-      plan += `${i+1}. ${ej}\n`;
+    textoPlan += `¿Quieres cambiar la dieta? ${changeDiet === "si" ? "Sí" : "No"}\n¿Quieres cambiar la rutina? ${changeRoutine === "si" ? "Sí" : "No"}\n\n`;
+
+    textoPlan += `-- Alimentación --\n`;
+    textoPlan += `Desayuno:\n  • ${desayunoSeleccionado}\n\n`;
+    textoPlan += `Comida:\n  • ${comidaSeleccionada}\n\n`;
+    textoPlan += `Cena:\n  • ${cenaSeleccionada}\n\n`;
+
+    textoPlan += `-- Rutina de ejercicios --\n`;
+    rutinaList.forEach((ejercicio, i) => {
+      textoPlan += `  ${i + 1}. ${ejercicio}\n`;
     });
 
-    document.getElementById("resultado").textContent = plan;
+    document.getElementById("resultado").textContent = textoPlan;
   }
 
   function reiniciar() {
+    // Limpia todo
     document.getElementById("age").value = "";
     document.getElementById("weight").value = "";
     document.getElementById("height").value = "";
     document.getElementById("sex").value = "hombre";
     document.getElementById("condition").value = "";
     document.getElementById("goal").value = "bajar";
+    document.getElementById("activityTime").value = "";
+    document.getElementById("sportType").value = "ninguno";
+    document.getElementById("changeDiet").value = "no";
+    document.getElementById("changeRoutine").value = "no";
     document.getElementById("food").value = "";
     document.getElementById("resultado").textContent = "";
   }
