@@ -3,478 +3,308 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NutriJosue</title>
+<title>Plan Nutrición y Rutinas Semanal</title>
 <style>
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
-    color: #333;
-    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    margin: 0; padding: 20px;
   }
-  header {
-    background-color: #00796b;
-    color: white;
-    padding: 20px;
+  h1 {
     text-align: center;
-    font-size: 1.8rem;
+    margin-bottom: 15px;
   }
-  header small {
+  label, select, input, textarea {
     display: block;
-    font-size: 0.9rem;
-    margin-top: 5px;
-    color: #c8e6c9;
-  }
-  main {
-    max-width: 700px;
-    margin: 30px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
-  label {
-    display: block;
-    margin-top: 20px;
-    font-weight: bold;
-  }
-  input, select, textarea {
+    margin: 8px 0;
     width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
+    max-width: 400px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
   }
   button {
-    margin-top: 25px;
-    background-color: #00796b;
-    color: white;
+    padding: 10px 15px;
     border: none;
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 1rem;
+    background-color: #ff6f61;
+    color: white;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    margin-top: 10px;
   }
   button:hover {
-    background-color: #004d40;
+    background-color: #e65b50;
   }
-  button.red {
-    background-color: #c62828;
-    margin-left: 10px;
+  #resultado {
+    margin-top: 20px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 10px;
+    padding: 15px;
+    overflow-x: auto;
   }
-  button.red:hover {
-    background-color: #8b0000;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    color: #000;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
   }
-  .output {
-    margin-top: 30px;
-    background: #f1f8e9;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #c5e1a5;
-    white-space: pre-wrap;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.1rem;
-    color: #2e7d32;
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  th {
+    background-color: #2575fc;
+    color: white;
   }
 </style>
 </head>
 <body>
-<header>
-  NutriJosue
-  <small>Your choice, your way, your life</small>
-</header>
-<main>
-  <label for="age">Edad</label>
-  <input type="number" id="age" min="1" max="120" placeholder="Ej. 16" />
 
-  <label for="weight">Peso (kg)</label>
-  <input type="number" id="weight" min="1" max="500" placeholder="Ej. 70" />
+<h1>Plan Nutrición y Rutinas Semanal</h1>
 
-  <label for="height">Estatura (cm)</label>
-  <input type="number" id="height" min="30" max="250" placeholder="Ej. 170" />
+<label>Edad:</label>
+<input type="number" id="age" min="5" max="120" />
 
-  <label for="sex">Sexo</label>
-  <select id="sex">
-    <option value="hombre">Hombre</option>
-    <option value="mujer">Mujer</option>
-    <option value="otro">Otro / Prefiero no decir</option>
-  </select>
+<label>Peso (kg):</label>
+<input type="number" id="weight" min="20" max="300" step="0.1" />
 
-  <label for="condition">¿Tienes alguna enfermedad o alergia?</label>
-  <input type="text" id="condition" placeholder="Ej. Diabetes, intolerancia a la lactosa..." />
+<label>Estatura (cm):</label>
+<input type="number" id="height" min="50" max="250" />
 
-  <label for="goal">¿Cuál es tu objetivo?</label>
-  <select id="goal">
-    <option value="bajar">Bajar de peso</option>
-    <option value="subir">Subir masa muscular</option>
-    <option value="mantener">Mantenerme saludable</option>
-  </select>
+<label>Sexo:</label>
+<select id="sex">
+  <option value="hombre">Hombre</option>
+  <option value="mujer">Mujer</option>
+</select>
 
-  <label for="activityTime">Tiempo de actividad deportiva diaria (minutos)</label>
-  <input type="number" id="activityTime" min="0" max="360" placeholder="Ej. 45" />
+<label>Condiciones (alergias separadas por coma):</label>
+<textarea id="allergies" placeholder="Ejemplo: maní, leche, gluten"></textarea>
 
-  <label for="sportType">Tipo de deporte</label>
-  <select id="sportType">
-    <option value="ninguno">Ninguno / Solo ejercicio general</option>
-    <option value="natacion">Natación</option>
-    <option value="correr">Correr</option>
-    <option value="futbol">Fútbol</option>
-    <option value="basquetbol">Basquetbol</option>
-    <option value="pesas">Pesas / Gimnasio</option>
-    <option value="otro">Otro</option>
-  </select>
+<label>Objetivo:</label>
+<select id="goal">
+  <option value="bajar">Bajar de peso</option>
+  <option value="subir">Subir masa muscular</option>
+  <option value="mantener">Mantenerme saludable</option>
+</select>
 
-  <label for="changeDiet">¿Quieres cambiar la dieta?</label>
-  <select id="changeDiet">
-    <option value="no">No</option>
-    <option value="si">Sí</option>
-  </select>
+<label>Deporte principal:</label>
+<select id="sportType">
+  <option value="ninguno">Ejercicio general</option>
+  <option value="futbol">Fútbol</option>
+  <option value="basquetbol">Basquetbol</option>
+  <option value="pesas">Pesas</option>
+  <option value="natacion">Natación</option>
+  <option value="correr">Correr</option>
+  <option value="otro">Otro</option>
+</select>
 
-  <label for="changeRoutine">¿Quieres cambiar la rutina de ejercicios?</label>
-  <select id="changeRoutine">
-    <option value="no">No</option>
-    <option value="si">Sí</option>
-  </select>
+<label>Presupuesto diario para alimentación (MXN):</label>
+<input type="number" id="budget" min="10" max="1000" step="1" placeholder="Ejemplo: 150" />
 
-  <label for="food">Alimentos que no me son de agrado (separa con coma)</label>
-  <textarea id="food" placeholder="Ej. Brócoli, pescado, huevo..."></textarea>
+<label>Alimentos que no te gustan (separados por coma):</label>
+<textarea id="dislikedFoods" placeholder="Ejemplo: huevo, pescado"></textarea>
 
-  <button onclick="generarPlan()">Generar Plan de Nutrición</button>
-  <button onclick="reiniciar()" class="red">Rehacer Plan</button>
+<button onclick="generarPlan()">Generar Plan Semanal</button>
+<button onclick="reiniciar()">Reiniciar</button>
 
-  <div id="resultado" class="output"></div>
-</main>
+<div id="resultado"></div>
 
 <script>
-  // Listas con 30 opciones para comidas y rutinas
-  const desayunos = [ /* mismo array que antes con 30 desayunos */ 
-    "Avena (50g) con manzana (100g)",
-    "Yogur griego bajo en grasa (150g) con chía (15g)",
-    "Huevos revueltos (2 huevos) con espinacas (50g) y jitomate (50g)",
-    "Smoothie de plátano (1 mediano), avena (40g) y leche vegetal (200ml)",
-    "Tostadas integrales (2 rebanadas) con aguacate (50g) y jitomate (50g)",
-    "Pan integral (2 rebanadas) con queso cottage (50g) y fresas (70g)",
-    "Batido de leche (200ml), plátano (1 mediano) y mantequilla de maní (15g)",
-    "Omelette de claras (3 claras) con champiñones (50g)",
-    "Fruta fresca (200g) con granola sin azúcar (40g)",
-    "Chía remojada (30g) con leche de almendra (200ml) y frutos rojos (50g)",
-    "Pan pita integral (1 unidad) con hummus (40g) y pepino (50g)",
-    "Batido verde: espinaca (50g), manzana (100g) y apio (50g)",
-    "Cereal integral (50g) con leche descremada (200ml)",
-    "Pan integral (2 rebanadas) con mermelada natural (20g)",
-    "Pan francés integral (2 rebanadas) con miel (10g) y nueces (15g)",
-    "Yogur natural (150g) con almendras (15g) y miel (10g)",
-    "Huevos cocidos (2 huevos) con rebanadas de jitomate (50g)",
-    "Barra energética casera (avena 40g, nueces 20g, miel 15g)",
-    "Tortilla de maíz (2 piezas) con queso panela (50g)",
-    "Pan integral (2 rebanadas) con jamón de pavo (50g)",
-    "Pan de centeno (2 rebanadas) con queso bajo en grasa (50g)",
-    "Fruta en trozos (200g) con yogurt natural (150g)",
-    "Pan tostado integral (2 rebanadas) con aguacate (50g) y chile piquín",
-    "Huevos pochados (2 huevos) con espinacas (50g)",
-    "Tazón de quinoa (100g) con fruta (100g) y miel (10g)",
-    "Pan integral (2 rebanadas) con mantequilla natural (15g)",
-    "Ensalada de frutas (200g) con semillas (20g)",
-    "Batido de proteína (1 scoop) con leche (200ml) y fruta (100g)",
-    "Tostadas francesas integrales (2 piezas) con canela",
-    "Pan de avena (2 rebanadas) con mantequilla de almendra (15g)"
-  ];
-  const comidas = [ /* 30 comidas... */
-    "Pechuga de pollo asada (150g) con ensalada (100g)",
-    "Tacos de lechuga (3 piezas) con atún (120g)",
-    "Carne molida magra (150g) con arroz integral (100g) y vegetales (100g)",
-    "Pollo al horno (150g) con pasta integral (100g) y brócoli (100g)",
-    "Filete de pescado a la plancha (150g) con quinoa (100g)",
-    "Ensalada César con pollo a la parrilla (150g pollo, 100g lechuga)",
-    "Sopa de lentejas (1 taza) con verduras (100g)",
-    "Tacos de pescado (3 piezas) con salsa de mango (50g)",
-    "Pollo en salsa de jitomate (150g) con arroz blanco (100g)",
-    "Bistec (150g) con puré de papa (100g) y espárragos (100g)",
-    "Ensalada de garbanzos (150g) con jitomate (50g) y pepino (50g)",
-    "Pasta integral (100g) con salsa de tomate natural (80g)",
-    "Filete de res (150g) con verduras al vapor (100g)",
-    "Pollo al curry (150g) con arroz basmati (100g)",
-    "Pescado empapelado (150g) con verduras (100g)",
-    "Pechuga de pavo (150g) con ensalada de quinoa (100g)",
-    "Sopa de verduras (1 taza) con arroz integral (100g)",
-    "Tacos de pollo (3 piezas) con guacamole (50g)",
-    "Pechuga de pollo (150g) con papas al horno (100g)",
-    "Carne de res (150g) con nopales (100g) y frijoles (100g)",
-    "Salmón a la plancha (150g) con espinacas (100g)",
-    "Ensalada de atún (150g) con huevo duro (2 huevos)",
-    "Arroz con pollo (150g pollo, 100g arroz)",
-    "Carne asada (150g) con ensalada de nopales (100g)",
-    "Pasta con camarones (150g camarones, 100g pasta) y ajo",
-    "Tortilla de maíz (2 piezas) con pollo deshebrado (150g)",
-    "Pollo con vegetales al vapor (150g pollo, 100g verduras)",
-    "Sopa de frijol (1 taza) con verduras (100g)",
-    "Pechuga de pollo en salsa verde (150g) con arroz (100g)",
-    "Arrachera (150g) con cebollitas cambray (100g)"
-  ];
-  const cenas = [ /* 30 cenas... */
-    "Sopa de verduras con lentejas (1 taza)",
-    "Ensalada de garbanzos con jitomate y pepino (150g)",
-    "Crema de calabaza con semillas (1 taza)",
-    "Wrap de pavo con verduras frescas (1 unidad)",
-    "Tostadas integrales con aguacate y jitomate (2 piezas)",
-    "Sándwich de atún con pan integral (1 unidad)",
-    "Omelette de vegetales y queso bajo en grasa (2 huevos)",
-    "Ensalada de espinacas con nueces y manzana (150g)",
-    "Sopa miso con tofu y algas (1 taza)",
-    "Ensalada César ligera (150g lechuga y pollo)",
-    "Verduras al vapor con pechuga de pollo (150g)",
-    "Tacos de lechuga con pollo (3 piezas)",
-    "Puré de papa con pescado al horno (150g)",
-    "Ensalada de quinoa con verduras (150g)",
-    "Huevos revueltos con champiñones (2 huevos)",
-    "Sopa de tomate natural (1 taza)",
-    "Tortilla española con verduras (1 porción)",
-    "Ensalada caprese con albahaca (150g)",
-    "Tostadas integrales con frijoles y queso (2 piezas)",
-    "Pescado a la plancha con ensalada verde (150g)",
-    "Tazón de verduras salteadas (150g)",
-    "Ensalada de pepino con yogurt (150g)",
-    "Omelette de claras con espinacas (3 claras)",
-    "Puré de camote con pollo deshebrado (150g)",
-    "Sopa de calabacín y cebolla (1 taza)",
-    "Rollitos de jamón de pavo y queso (2 piezas)",
-    "Ensalada de zanahoria y betabel (150g)",
-    "Tortilla de maíz con guacamole (2 piezas)",
-    "Crema de champiñones light (1 taza)",
-    "Tostadas francesas integrales (2 piezas)"
-  ];
+// Listas de comidas con precio aproximado (en pesos MXN)
+const desayunos = [
+  { nombre: "Avena con fruta", precio: 20 },
+  { nombre: "Huevos revueltos con tortilla", precio: 25 },
+  { nombre: "Yogur con granola", precio: 30 },
+  { nombre: "Smoothie de plátano y leche", precio: 18 },
+  { nombre: "Pan integral con aguacate", precio: 28 }
+];
 
-  // Rutinas extendidas por objetivo y deporte (ejemplo simple)
-  const rutinas = {
-    bajar: {
-      general: [
-        "30 minutos de caminata rápida",
-        "3 series de 15 sentadillas",
-        "3 series de 10 flexiones",
-        "2 series de plancha de 30 segundos",
-        "Estiramientos (10 minutos)"
-      ],
-      natacion: [
-        "45 minutos de nado continuo suave",
-        "Ejercicios de patada 4x10 minutos",
-        "3 series de abdominales",
-        "Estiramientos de hombros y espalda",
-        "20 minutos de bicicleta estática"
-      ],
-      correr: [
-        "30 minutos de carrera suave",
-        "Intervalos 5x1 minuto rápido/1 lento",
-        "3 series de sentadillas",
-        "Estiramientos de piernas",
-        "Plancha de 1 minuto"
-      ],
-      futbol: [
-        "Calentamiento con trote 10 minutos",
-        "Ejercicios de velocidad 5x20 metros",
-        "Pases y control de balón 15 minutos",
-        "3 series de saltos pliométricos",
-        "Estiramientos"
-      ],
-      basquetbol: [
-        "Trote 15 minutos",
-        "Ejercicios de dribbling 10 minutos",
-        "Saltos verticales 3x10",
-        "Plancha 3x40 segundos",
-        "Estiramientos de cuerpo completo"
-      ],
-      pesas: [
-        "3 series de press de banca 10 repeticiones",
-        "3 series de sentadillas con peso 10 repeticiones",
-        "3 series de curls de bíceps 12 repeticiones",
-        "3 series de press militar 10 repeticiones",
-        "Estiramientos"
-      ],
-      otro: [
-        "Ejercicio general de 30 minutos",
-        "Estiramientos",
-        "Ejercicios de fuerza básica",
-        "Actividades de movilidad",
-        "Respiración y relajación"
-      ]
-    },
-    subir: {
-      general: [
-        "4 series de press de banca 8-10 repeticiones",
-        "4 series de sentadillas con peso 10-12 repeticiones",
-        "3 series de curls de bíceps 12 repeticiones",
-        "3 series de press militar 12 repeticiones",
-        "3 series de plancha 1 minuto"
-      ],
-      natacion: [
-        "Nado de fuerza 30 minutos",
-        "Entrenamiento con aletas 4x10 minutos",
-        "Trabajo de core 4 series",
-        "Flexiones 3x15",
-        "Estiramientos"
-      ],
-      correr: [
-        "Entrenamiento de intervalos 6x2 minutos rápido",
-        "Sentadillas con peso 4x12",
-        "Ejercicios de core 3 series",
-        "Press de banca 4x10",
-        "Estiramientos"
-      ],
-      futbol: [
-        "Entrenamiento de fuerza 4x10 repeticiones",
-        "Ejercicios de agilidad y velocidad",
-        "Pases con resistencia",
-        "Saltos pliométricos 3x12",
-        "Estiramientos"
-      ],
-      basquetbol: [
-        "Rutina de fuerza y salto",
-        "Ejercicios de dribbling con peso",
-        "Saltos verticales 4x12",
-        "Plancha con peso 3x1 min",
-        "Estiramientos"
-      ],
-      pesas: [
-        "Rutina intensa de gimnasio",
-        "5 series de press banca",
-        "5 series de sentadillas con peso",
-        "3 series de curls de bíceps pesados",
-        "Estiramientos y descanso"
-      ],
-      otro: [
-        "Rutina general para subir masa muscular",
-        "Ejercicios de fuerza básica",
-        "Movilidad y flexibilidad",
-        "Descanso activo",
-        "Nutrición adecuada"
-      ]
-    },
-    mantener: {
-      general: [
-        "20 minutos de cardio moderado",
-        "3 series de 12 sentadillas",
-        "3 series de 10 flexiones",
-        "3 series de plancha de 45 segundos",
-        "Estiramientos y movilidad"
-      ],
-      natacion: [
-        "Nado suave 30 minutos",
-        "Ejercicios de técnica 20 minutos",
-        "Trabajo de core 3 series",
-        "Estiramientos",
-        "Relajación"
-      ],
-      correr: [
-        "Carrera suave 30 minutos",
-        "Ejercicios de estiramiento",
-        "Trabajo de fuerza ligera",
-        "Plancha 3x30 seg",
-        "Movilidad"
-      ],
-      futbol: [
-        "Calentamiento con trote ligero",
-        "Ejercicios de pases y control",
-        "Movilidad articular",
-        "Estiramientos",
-        "Descanso activo"
-      ],
-      basquetbol: [
-        "Trote suave 15 minutos",
-        "Dribbling sin peso",
-        "Saltos suaves",
-        "Estiramientos",
-        "Movilidad"
-      ],
-      pesas: [
-        "Rutina ligera de fuerza",
-        "3 series de press banca",
-        "3 series de sentadillas sin peso",
-        "Plancha 3x30 seg",
-        "Estiramientos"
-      ],
-      otro: [
-        "Ejercicio general moderado",
-        "Movilidad",
-        "Estiramientos",
-        "Respiración",
-        "Relajación"
-      ]
+const comidas = [
+  { nombre: "Pechuga de pollo con arroz y verduras", precio: 50 },
+  { nombre: "Ensalada de atún", precio: 45 },
+  { nombre: "Tacos de carne asada (3)", precio: 55 },
+  { nombre: "Sopa de verduras con pollo", precio: 40 },
+  { nombre: "Pasta integral con salsa de tomate", precio: 48 }
+];
+
+const cenas = [
+  { nombre: "Ensalada verde con huevo", precio: 35 },
+  { nombre: "Quesadillas de pollo", precio: 40 },
+  { nombre: "Verduras al vapor con pescado", precio: 45 },
+  { nombre: "Tortilla de espinacas", precio: 30 },
+  { nombre: "Sándwich integral de pavo", precio: 38 }
+];
+
+// Rutinas para 5 días (por músculo) + extras para variar (30 rutinas)
+const rutinasMusculo = {
+  pecho: [
+    "Press de banca 4x10",
+    "Fondos en paralelas 3x12",
+    "Aperturas con mancuernas 3x12",
+    "Press inclinado 3x10",
+    "Flexiones 3x15"
+  ],
+  espalda: [
+    "Dominadas 4x8",
+    "Remo con barra 4x10",
+    "Pullover 3x12",
+    "Jalones al pecho 3x10",
+    "Peso muerto 3x8"
+  ],
+  pierna: [
+    "Sentadillas 4x12",
+    "Prensa de pierna 3x10",
+    "Zancadas 3x12",
+    "Curl femoral 3x12",
+    "Elevación de talones 3x15"
+  ],
+  hombros: [
+    "Press militar 4x10",
+    "Elevaciones laterales 3x12",
+    "Remo al mentón 3x10",
+    "Elevaciones frontales 3x12",
+    "Pájaros 3x15"
+  ],
+  brazo: [
+    "Curl de bíceps 4x12",
+    "Extensión de tríceps 4x12",
+    "Curl martillo 3x12",
+    "Fondos para tríceps 3x15",
+    "Curl concentrado 3x10"
+  ]
+};
+
+// Aquí podrías agregar 30 rutinas extra para variar (ejemplo con una para pecho, luego se puede ampliar)
+const rutinasExtras = {
+  pecho: [
+    "Press de banca con mancuernas 4x10",
+    "Aperturas en banco inclinado 3x12",
+    "Press declinado 3x10",
+    "Cruces en polea 3x15",
+    "Flexiones con palmada 3x12"
+  ],
+  // Agrega para los demás músculos igual si quieres más variedad...
+  // ...
+};
+
+// Función para filtrar comidas por presupuesto y alergias, y que no estén en alimentos que no gustan
+function filtrarComidas(lista, presupuesto, alergias, noGustan) {
+  return lista.filter(item => {
+    const nombreMinus = item.nombre.toLowerCase();
+    // Revisar alergias y alimentos no gustados
+    for (const alergia of alergias) {
+      if (alergia && nombreMinus.includes(alergia.trim().toLowerCase())) return false;
     }
-  };
-
-  function generarPlan() {
-    const age = document.getElementById("age").value;
-    const weight = document.getElementById("weight").value;
-    const height = document.getElementById("height").value;
-    const sex = document.getElementById("sex").value;
-    const condition = document.getElementById("condition").value || "Ninguna";
-    const goal = document.getElementById("goal").value;
-    const activityTime = document.getElementById("activityTime").value || 0;
-    const sportType = document.getElementById("sportType").value;
-    const changeDiet = document.getElementById("changeDiet").value;
-    const changeRoutine = document.getElementById("changeRoutine").value;
-    const dislikedFoods = document.getElementById("food").value;
-
-    if (!age || !weight || !height) {
-      alert("Por favor completa Edad, Peso y Estatura.");
-      return;
+    for (const disgusto of noGustan) {
+      if (disgusto && nombreMinus.includes(disgusto.trim().toLowerCase())) return false;
     }
+    // Revisar precio contra presupuesto
+    return item.precio <= presupuesto;
+  });
+}
 
-    // Selección aleatoria de comidas sin repetir (para desayuno, comida y cena)
-    function getRandomMeals(arr, count) {
-      const selected = [];
-      const copy = [...arr];
-      for (let i = 0; i < count; i++) {
-        if (copy.length === 0) break;
-        const idx = Math.floor(Math.random() * copy.length);
-        selected.push(copy.splice(idx, 1)[0]);
-      }
-      return selected;
-    }
+// Función para elegir una comida al azar de la lista filtrada
+function elegirComida(lista) {
+  if (lista.length === 0) return "No hay opciones disponibles con tu presupuesto y preferencias";
+  const idx = Math.floor(Math.random() * lista.length);
+  return lista[idx].nombre;
+}
 
-    const desayunoSeleccionado = getRandomMeals(desayunos, 1)[0];
-    const comidaSeleccionada = getRandomMeals(comidas, 1)[0];
-    const cenaSeleccionada = getRandomMeals(cenas, 1)[0];
+// Generar plan semanal
+function generarPlan() {
+  const age = document.getElementById("age").value;
+  const weight = document.getElementById("weight").value;
+  const height = document.getElementById("height").value;
+  const sex = document.getElementById("sex").value;
+  const goal = document.getElementById("goal").value;
+  const sportType = document.getElementById("sportType").value;
+  const budget = parseFloat(document.getElementById("budget").value);
+  const allergiesInput = document.getElementById("allergies").value;
+  const dislikedInput = document.getElementById("dislikedFoods").value;
 
-    // Rutina según objetivo y deporte
-    const rutinaList = rutinas[goal][sportType] || rutinas[goal]["general"];
+  if (!age || !weight || !height || !budget) {
+    alert("Por favor completa Edad, Peso, Estatura y Presupuesto.");
+    return;
+  }
 
-    // Generar texto del plan
-    let textoPlan = `--- PLAN DE NUTRICIÓN Y EJERCICIO ---\n\n`;
-    textoPlan += `Edad: ${age} años\nPeso: ${weight} kg\nEstatura: ${height} cm\nSexo: ${sex}\nCondiciones: ${condition}\nObjetivo: ${goal === "bajar" ? "Bajar de peso" : goal === "subir" ? "Subir masa muscular" : "Mantenerme saludable"}\nActividad deportiva diaria: ${activityTime} minutos\nDeporte: ${sportType === "ninguno" ? "Ejercicio general" : sportType.charAt(0).toUpperCase() + sportType.slice(1)}\n\n`;
+  // Preparar arrays de alergias y disgustos
+  const alergias = allergiesInput ? allergiesInput.split(",") : [];
+  const noGustan = dislikedInput ? dislikedInput.split(",") : [];
 
-    textoPlan += `Alimentos que no te gustan: ${dislikedFoods ? dislikedFoods : "Ninguno"}\n\n`;
+  // Presupuesto dividido en 3 comidas (simplificado)
+  const presupuestoPorComida = budget / 3;
 
-    textoPlan += `¿Quieres cambiar la dieta? ${changeDiet === "si" ? "Sí" : "No"}\n¿Quieres cambiar la rutina? ${changeRoutine === "si" ? "Sí" : "No"}\n\n`;
+  // Filtrar comidas según presupuesto y alergias/disgustos
+  const desayunoOpciones = filtrarComidas(desayunos, presupuestoPorComida, alergias, noGustan);
+  const comidaOpciones = filtrarComidas(comidas, presupuestoPorComida, alergias, noGustan);
+  const cenaOpciones = filtrarComidas(cenas, presupuestoPorComida, alergias, noGustan);
 
-    textoPlan += `-- Alimentación --\n`;
-    textoPlan += `Desayuno:\n  • ${desayunoSeleccionado}\n\n`;
-    textoPlan += `Comida:\n  • ${comidaSeleccionada}\n\n`;
-    textoPlan += `Cena:\n  • ${cenaSeleccionada}\n\n`;
+  // Elegir comidas al azar
+  const desayuno = elegirComida(desayunoOpciones);
+  const comida = elegirComida(comidaOpciones);
+  const cena = elegirComida(cenaOpciones);
 
-    textoPlan += `-- Rutina de ejercicios --\n`;
-    rutinaList.forEach((ejercicio, i) => {
-      textoPlan += `  ${i + 1}. ${ejercicio}\n`;
+  // Crear plan de ejercicios para 5 días con músculos
+  const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+  const musculos = ["pecho", "espalda", "pierna", "hombros", "brazo"];
+  // Usaremos rutinasMusculo para simplificar. Podrías combinar rutinasExtras para variar.
+  
+  let tabla = `<table><thead><tr><th>Día</th><th>Músculo</th><th>Rutina</th></tr></thead><tbody>`;
+
+  for (let i = 0; i < 5; i++) {
+    const musculo = musculos[i];
+    const rutina = rutinasMusculo[musculo];
+    tabla += `<tr>
+      <td>${diasSemana[i]}</td>
+      <td style="text-transform: capitalize;">${musculo}</td>
+      <td><ul>`;
+    rutina.forEach(ejercicio => {
+      tabla += `<li>${ejercicio}</li>`;
     });
-
-    document.getElementById("resultado").textContent = textoPlan;
+    tabla += `</ul></td></tr>`;
   }
+  tabla += "</tbody></table>";
 
-  function reiniciar() {
-    // Limpia todo
-    document.getElementById("age").value = "";
-    document.getElementById("weight").value = "";
-    document.getElementById("height").value = "";
-    document.getElementById("sex").value = "hombre";
-    document.getElementById("condition").value = "";
-    document.getElementById("goal").value = "bajar";
-    document.getElementById("activityTime").value = "";
-    document.getElementById("sportType").value = "ninguno";
-    document.getElementById("changeDiet").value = "no";
-    document.getElementById("changeRoutine").value = "no";
-    document.getElementById("food").value = "";
-    document.getElementById("resultado").textContent = "";
-  }
+  // Mostrar resultado completo
+  const textoPlan = `
+  <h2>Plan semanal personalizado</h2>
+  <p><b>Edad:</b> ${age} años | <b>Peso:</b> ${weight} kg | <b>Estatura:</b> ${height} cm | <b>Sexo:</b> ${sex} | <b>Objetivo:</b> ${goal}</p>
+  <p><b>Presupuesto diario para comida:</b> $${budget.toFixed(2)} MXN</p>
+  <p><b>Alergias:</b> ${alergias.length ? alergias.join(", ") : "Ninguna"}</p>
+  <p><b>Alimentos que no te gustan:</b> ${noGustan.length ? noGustan.join(", ") : "Ninguno"}</p>
+
+  <h3>Plan de alimentación diario (ajustado a tu presupuesto):</h3>
+  <ul>
+    <li><b>Desayuno:</b> ${desayuno}</li>
+    <li><b>Comida:</b> ${comida}</li>
+    <li><b>Cena:</b> ${cena}</li>
+  </ul>
+
+  ${tabla}
+  `;
+
+  document.getElementById("resultado").innerHTML = textoPlan;
+}
+
+function reiniciar() {
+  document.getElementById("age").value = "";
+  document.getElementById("weight").value = "";
+  document.getElementById("height").value = "";
+  document.getElementById("sex").value = "hombre";
+  document.getElementById("goal").value = "bajar";
+  document.getElementById("sportType").value = "ninguno";
+  document.getElementById("budget").value = "";
+  document.getElementById("allergies").value = "";
+  document.getElementById("dislikedFoods").value = "";
+  document.getElementById("resultado").innerHTML = "";
+}
 </script>
+
 </body>
 </html>
