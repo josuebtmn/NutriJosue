@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NutriPro Verdes y Saludables 💚</title>
+<title>NutriPro Fitness 💚</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -17,14 +17,16 @@ header{display:flex;justify-content:space-between;align-items:center;padding:20p
 .logo{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-light));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:white;box-shadow:0 6px 20px rgba(47,138,87,0.2);}
 h1.appTitle{font-size:20px;color:#083a2a;}
 p.lead{font-size:14px;color:var(--muted);}
-.container{max-width:1400px;margin:30px auto;padding:0 20px;display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:flex-start;}
-.card{background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);transition:transform 0.2s ease, box-shadow 0.2s ease;}
+.container{max-width:1400px;margin:30px auto;padding:0 20px;}
+.tabs{display:flex;gap:6px;margin-bottom:20px;}
+.tabBtn{flex:1;padding:12px 0;background:var(--accent-bg);border-radius:12px;cursor:pointer;text-align:center;font-weight:700;transition:all 0.2s;}
+.tabBtn.active{background:var(--accent);color:white;box-shadow:0 6px 16px rgba(47,138,87,0.2);}
+.card{background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-bottom:20px;transition:transform 0.2s ease;}
 .card:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(16,24,40,0.12);}
-h2,h3,h4{color:#083a2a;margin-bottom:10px;}
 label{display:block;font-size:13px;color:#083a2a;margin-bottom:6px;font-weight:600;}
-input,textarea,select{width:100%;padding:10px 14px;border-radius:12px;border:1px solid #e0f3e8;background:transparent;font-size:14px;outline:none;}
-textarea{min-height:90px;resize:vertical;}
-.btn{background:var(--accent);color:white;border:none;padding:10px 16px;border-radius:12px;cursor:pointer;font-weight:700;transition:all 0.2s;}
+input,textarea,select{width:100%;padding:10px 14px;border-radius:12px;border:1px solid #e0f3e8;background:transparent;font-size:14px;outline:none;margin-bottom:10px;}
+textarea{min-height:80px;resize:vertical;}
+.btn{background:var(--accent);color:white;border:none;padding:10px 16px;border-radius:12px;cursor:pointer;font-weight:700;transition:all 0.2s;margin-top:6px;}
 .btn:hover{background:var(--accent-light);}
 .btn.secondary{background:transparent;color:var(--accent);border:1px solid rgba(47,138,87,0.2);}
 .muted{color:var(--muted);font-size:13px;}
@@ -34,7 +36,6 @@ textarea{min-height:90px;resize:vertical;}
 .bubble{display:inline-block;padding:10px 14px;border-radius:16px;margin:8px 4px;max-width:78%;word-wrap:break-word;line-height:1.4;}
 .bubble.me{background:#e6ffed;margin-left:auto;text-align:right;box-shadow:0 3px 8px rgba(12,34,18,0.06);}
 .bubble.them{background:#f0fff7;text-align:left;box-shadow:0 3px 8px rgba(12,34,18,0.04);}
-.calendarHeader{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
 #calendarGrid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;}
 .dayCell{min-height:100px;border-radius:14px;padding:10px;background:linear-gradient(180deg,#fff,#f6fff7);border:1px solid #e0f3e8;transition:all 0.2s;cursor:pointer;}
 .dayCell:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(16,24,40,0.06);}
@@ -48,116 +49,81 @@ aside{display:flex;flex-direction:column;gap:22px;}
 <header>
 <div class="logo">NP</div>
 <div>
-<h1 class="appTitle">NutriPro</h1>
+<h1 class="appTitle">NutriPro Fitness</h1>
 <p class="lead">Simulación interactiva de dieta y entrenamiento</p>
 </div>
 </header>
 
 <main class="container">
-<!-- Left Column -->
-<section class="card" id="leftColumn">
-<div id="pane-welcome">
-<h2>Bienvenido a NutriPro 💚</h2>
-<p class="muted">Regístrate para recibir tu plan simulado</p>
-<div style="display:flex;gap:12px;margin-top:16px;">
-<button class="btn" onclick="showPane('pane-register')">Crear cuenta</button>
-<button class="btn secondary" onclick="showPane('pane-login')">Iniciar sesión</button>
+<div class="tabs">
+<div class="tabBtn active" onclick="switchTab('tabData')">Datos Cliente</div>
+<div class="tabBtn" onclick="switchTab('tabDiet')">Dietas & Rutinas</div>
+<div class="tabBtn" onclick="switchTab('tabChat')">Chat Nutriólogo</div>
+</div>
+
+<!-- TAB CONTENIDO -->
+<div id="tabData">
+<div class="card">
+<h2>Registro / Datos Cliente</h2>
+<label>Nombre completo</label><input id="name" type="text">
+<label>Correo</label><input id="email" type="email">
+<label>Objetivo</label><select id="goal"><option>Perder peso</option><option>Ganar músculo</option><option>Mantener</option></select>
+<label>Peso (kg)</label><input id="weight" type="number">
+<label>Edad</label><input id="age" type="number">
+<label>Presupuesto (MXN)</label><input id="budget" type="number">
+<label>Condiciones especiales</label><input id="condition" type="text">
+<label>Días disponibles</label><select id="days" multiple><option>Lunes</option><option>Martes</option><option>Miércoles</option><option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option></select>
+<label>Otro deporte</label><input id="otherSport" type="text">
+<button class="btn" onclick="saveClientData()">Guardar Datos</button>
+<p id="msgData" class="muted"></p>
 </div>
 </div>
 
-<div id="pane-register" style="display:none">
-<h3>Registro de cliente</h3>
-<label>Nombre completo</label><input id="reg_name" type="text">
-<label>Correo electrónico</label><input id="reg_email" type="email">
-<div style="margin-top:12px;"><button class="btn" onclick="handleRegister()">Registrarse</button></div>
-<div id="register_msg" class="muted" style="margin-top:10px;"></div>
-</div>
-
-<div id="pane-login" style="display:none">
-<h3>Iniciar sesión</h3>
-<label>Correo</label><input id="login_email" type="email">
-<div style="margin-top:12px;"><button class="btn" onclick="handleLogin()">Entrar</button></div>
-</div>
-
-<div id="pane-dashboard" style="display:none">
-<h3 id="dashTitle">Hola</h3>
-<p class="muted" id="analysisMsg">Tu solicitud será analizada. 2-5 días hábiles en tu calendario se encontrará tu rutina y dieta</p>
-
-<h4>Chat con tu nutriólogo</h4>
-<div id="chatBox"></div>
-<div class="row" style="margin-top:8px;">
-<input type="text" id="chatInput" placeholder="Escribe un mensaje..." class="col">
-<button class="btn" onclick="sendMessage()">Enviar</button>
-</div>
-
-<h4 style="margin-top:20px;">Calendario de dieta y entrenamiento</h4>
-<div class="calendarHeader">
-<span id="monthName">Octubre 2025</span>
-<button class="btn secondary" onclick="prevMonth()">‹</button>
-<button class="btn secondary" onclick="nextMonth()">›</button>
-</div>
+<div id="tabDiet" style="display:none">
+<div class="card">
+<h2>Calendario Dietas y Entrenamiento</h2>
 <div id="calendarGrid"></div>
 </div>
-</section>
-
-<!-- Right Column -->
-<aside>
-<div class="card">
-<h3>Cuestionario rápido</h3>
-<label>Objetivo</label>
-<select id="goal">
-<option>Perder peso</option>
-<option>Ganar músculo</option>
-<option>Mantener</option>
-</select>
-<label>Peso (kg)</label><input type="number" id="weight">
-<label>Edad</label><input type="number" id="age">
-<label>Presupuesto (MXN)</label><input type="number" id="budget">
-<label>Condiciones especiales</label><input type="text" id="condition">
-<label>Días disponibles para entrenar</label>
-<select id="days" multiple>
-<option>Lunes</option><option>Martes</option><option>Miércoles</option><option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option>
-</select>
-<label>¿Practicas otro deporte?</label>
-<input type="text" id="otherSport">
-<button class="btn" style="margin-top:12px;" onclick="saveQuestionnaire()">Guardar respuestas</button>
-<div id="questionnaireMsg" class="muted" style="margin-top:8px;"></div>
 </div>
-</aside>
+
+<div id="tabChat" style="display:none">
+<div class="card">
+<h2>Chat Nutriólogo</h2>
+<div id="chatBox"></div>
+<div class="row">
+<input type="text" id="chatInput" class="col" placeholder="Escribe un mensaje...">
+<button class="btn" onclick="sendMessage()">Enviar</button>
+</div>
+</div>
+</div>
 </main>
 
 <script>
-let currentUser='';
+// Datos simulados
 let users={};
-function showPane(id){
-  document.querySelectorAll('#leftColumn > div').forEach(d=>d.style.display='none');
-  document.getElementById(id).style.display='block';
+let currentUser='';
+
+// Manejo de pestañas
+function switchTab(tab){
+document.querySelectorAll('.tabBtn').forEach(b=>b.classList.remove('active'));
+event.target.classList.add('active');
+document.getElementById('tabData').style.display='none';
+document.getElementById('tabDiet').style.display='none';
+document.getElementById('tabChat').style.display='none';
+document.getElementById(tab).style.display='block';
 }
-function handleRegister(){
-  const name=document.getElementById('reg_name').value;
-  const email=document.getElementById('reg_email').value;
-  if(!name||!email){document.getElementById('register_msg').innerText='Llena todos los campos';return;}
-  users[email]={name,email,chat:[],calendar:generateCalendarData()};
-  document.getElementById('register_msg').innerText='Registrado correctamente!';
+
+// Guardar datos
+function saveClientData(){
+const name=document.getElementById('name').value;
+const email=document.getElementById('email').value;
+if(!name||!email){document.getElementById('msgData').innerText='Llena todos los campos';return;}
+users[email]={name,email,goal:document.getElementById('goal').value,weight:document.getElementById('weight').value,age:document.getElementById('age').value,budget:document.getElementById('budget').value,condition:document.getElementById('condition').value,days:[...document.getElementById('days').selectedOptions].map(o=>o.value),otherSport:document.getElementById('otherSport').value,chat:[],calendar:generateCalendar()};
+currentUser=email;
+document.getElementById('msgData').innerText='Datos guardados! Ahora ve a otras pestañas';
+renderCalendar();
 }
-function handleLogin(){
-  const email=document.getElementById('login_email').value;
-  if(users[email]){currentUser=email;document.getElementById('dashTitle').innerText='Hola '+users[email].name;showPane('pane-dashboard');renderCalendar();}else{alert('Usuario no registrado');}}
-function sendMessage(){
-  const input=document.getElementById('chatInput');if(!input.value)return;
-  users[currentUser].chat.push({from:'me',text:input.value});renderChat();input.value='';setTimeout(()=>{users[currentUser].chat.push({from:'them',text:'Gracias por tu mensaje! Tu nutriólogo lo revisará.'});renderChat();},800);}
-function renderChat(){
-  const box=document.getElementById('chatBox');box.innerHTML='';
-  users[currentUser].chat.forEach(m=>{const div=document.createElement('div');div.className='bubble '+m.from;div.innerText=m.text;box.appendChild(div);});box.scrollTop=box.scrollHeight;}
-function saveQuestionnaire(){
-  users[currentUser].questionnaire={goal:document.getElementById('goal').value,weight:document.getElementById('weight').value,age:document.getElementById('age').value,budget:document.getElementById('budget').value,condition:document.getElementById('condition').value,days:[...document.getElementById('days').selectedOptions].map(o=>o.value),otherSport:document.getElementById('otherSport').value};
-  document.getElementById('questionnaireMsg').innerText='Respuestas guardadas!';
-}
-let calendarDate=new Date();
-function generateCalendarData(){let arr=[];for(let i=1;i<=31;i++){arr.push({day:i,events:[{title:'Desayuno: avena y fruta'},{title:'Entrenamiento: cardio 30min'}]});}return arr;}
-function renderCalendar(){const grid=document.getElementById('calendarGrid');grid.innerHTML='';document.getElementById('monthName').innerText=calendarDate.toLocaleString('es-ES',{month:'long',year:'numeric'});let days=users[currentUser].calendar;days.forEach(d=>{const div=document.createElement('div');div.className='dayCell';div.innerHTML=`<div class="dateSmall">${d.day}</div>`;d.events.forEach(e=>{const ev=document.createElement('span');ev.className='eventChip';ev.innerText=e.title;div.appendChild(ev);});grid.appendChild(div);});}
-function prevMonth(){calendarDate.setMonth(calendarDate.getMonth()-1);renderCalendar();}
-function nextMonth(){calendarDate.setMonth(calendarDate.getMonth()+1);renderCalendar();}
-</script>
-</body>
-</html>
+
+// Generar calendario simulado
+function generateCalendar(){let arr=[];for(let i=1;i<=30;i++){arr.push({day:i,events:[{title:'Desayuno: avena y fruta'},{title:'Entrenamiento: cardio 30min'}]});}return arr;}
+function renderCalendar(){if(!currentUser)return;const grid=document.getElementById('calendarGrid');grid.innerHTML='';let days=users[currentUser].calendar;days.forEach(d=>{const div=document.createElement('div');div.className='dayCell';div.innerHTML=`<div class="dateSmall">${d.day}</div>`;d.events.forEach(e=>{const ev=document.createElement('span');ev.className='eventChip';ev.innerText=e.title;div.append
